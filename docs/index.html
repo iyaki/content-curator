@@ -2,101 +2,219 @@
 <html lang="es-AR">
 
 <head>
+	<title>Recopilador de contenidos curados | iyaki</title>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	
-	<title>iyaki - Allons-y!</title>
-	
-		<link href="/css/index.css" rel="stylesheet">
-	
-	<meta name="description" content="Pensamientos y cosas que encuentro interesantes">
+	<meta name="description" content="Re que encuentro interesantes">
 	<meta name="author" content="Ivan Yakimovicz">
-	<meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki">
+	<meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki, recopilador de contenidos curados, curator, knowledge base">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
-	
-	
-	<link rel="canonical" href="https://iyaki.ar/">
-	
-	<script>!function(t,e){var o,p,n,i;e.__SV||(window.posthog=e,e._i=[],e.init=function(r,s,a){function c(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(n=t.createElement("script")).type="text/javascript",n.async=!0,n.src=s.api_host+"/static/array.js",(i=t.getElementsByTagName("script")[0]).parentNode.insertBefore(n,i);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),p=0;p<o.length;p++)c(u,o[p]);e._i.push([r,s,a])},e.__SV=1)}(document,window.posthog||[]),posthog.init("phc_GiyRIzw94jjfJLj7Wm2KozJ1LnuFPY81cc3HymGjqd4",{api_host:"https://app.posthog.com"})</script>
+	<meta name="theme-color" content="#ffffff">
+	<link href="/css/index.css" rel="stylesheet">
+	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+	<!-- TODO: Agregar metricas -->
+
 </head>
 
 <body>
-	<header id="welcome" class="titles --dark">
-	<div class="titles__container">
-		<div>
-			<h1 class="titles__h1"><span class="titles__h1--hola">Hola!</span>&nbsp;&nbsp;Soy Iván Yaki</h1>
-			<h2 class="titles__h2">Y esta es mí página web personal</h2>
-			<h3 class="titles__h3">Pueden encontrar mas información sobre mí <a href="/about" title="Sobre mí">aquí</a></h3>
-		</div>
-	</div>
-	<div class="chevron-arrow-down" title="Allons-y!"></div>
-</header>
-<main class="main-content">
-	<section>
-		<article>
-			<h1 id="about-this">Sobre este sitio</h1>
-			<p>Hace algún tiempo compré en <a href="https://nic.ar/" title="Network Information Center Argentina">NIC Argentina</a> el dominio <i>iyaki.ar</i>. El primer paso obvio luego de eso era montar una página web (y si sobraba tiempo configurar un servidor de correo electrónico).</p>
-			<p>Después de múltiples búsquedas en Google sobre servicios de <span title="Alojamiento para sitios web"><i lang="en">hosting</i></span> y demás terminé creando esta página utilizando:</p>
-			<ul>
-				<li><a href="https://pages.github.com/" lang="en">Github Pages</a> para el alojamiento web.</li>
-				<li><a href="https://www.cloudflare.com/" lang="en">Cloudflare</a> para el registro de los <abbr title="Domain Name System" lang="en">DNS</abbr> y <abbr title="Content Delivery Network" lang="en">CDN</abbr>.</li>
-				<li>Mis manos y el <a href="https://code.visualstudio.com/" lang="en">Visual Studio Code</a> (con algunas extensiones) para escribir el <a href="https://github.com/iyaki/iyaki.github.io">código fuente de esta página</a>.</li>
-				<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">Eleventy</a> para pre-procesar el HTML de manera estática y poder reutilizar código.</li>
-			</ul>
-			<p><del>Eso es todo. No hay paso de compilación o transpilación, no hay <i lang="en">frameworks</i>, ni siquiera bibliotecas de <abbr title="Cascading Style Sheets" lang="en">CSS</abbr> o <abbr title="JavaScript" lang="en">JS</abbr>.</del> (<a href="/posts/20231127_migrando_ando/">Post, explicando las razones de este cambio</a>)</p>
-			<p>En esta primer versión de la página eso puede parecer una obviedad, pero mi intención es seguir desarrollandola de manera incremental y agregando, paulatinamente; estilos, funcionalidad y nuevas secciones.
-			</p>
-			<p>Por el momento me centro, principalmente, en que el uso de los elementos <abbr title="HyperText Markup Language" lang="en">HTML</abbr> sea semánticamente adecuado y <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" hreflang="en">accesible</a>.</p>
-			<br>
-			<p>Mi objetivo al crear esta página no es contar con un portfolio para agregar en mi <abbr title="Curriculum Vitae" lang="la">CV</abbr> sino poder compartir mis experiencias y vivencias.</p>
-			<p>Si algo de lo que ven les interesa; tienen sugerencias, criticas o cualquier comentario pueden escribirme a: <a href="mailto:me@iyaki.ar">me@iyaki.ar</a> (finalmente no configure un servidor de correo electrónico pero sí un sistema de redirección y envío de <i>e-mails</i> utilizando los servicios de <a href="https://www.cloudflare.com/es-es/products/email-routing/" lang="en">Cloudflare Email Routing</a> y <a href="https://www.zoho.com/es-xl/mail/" lang="en">Zoho Mail</a>, respectivamente).
-			</p>
-		</article>
-	</section>
-	<section id="projects" class="projects">
-		<h1>Proyectos</h1>
-		<p>Ademas de esta humilde <i lang="en">landing page</i> hay otros proyectos que mantengo bajo el ala de <i>iyaki.ar</i>.
+	<header class="header-panel">
+		<a href="/" title="Inicio">
+			<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con film azul y rojo" title="Allons-y!" async>
+		</a>
+		<h1>Colección personal de artículos de <abbr title="Information Technology" lang="en">IT</abbr> y afines</h1>
+		<p>
+			Aquí recopilo artículos que me resultan útiles o interesantes.
 		</p>
-		<article class="projects__project">
-			<header>
-				<h1>Recopilador de contenidos curados</h1>
-			</header>
-			<p>Leo muchos artículos de distintas fuentes todos los días. lo hago utilizando <a href="https://feedly.com/" lang="en">Feedly</a> y suscribiendome a múltiples <i lang="en">feeds <abbr title="Really Simple Syndication">RSS</abbr></i>. De todo lo que leo, a veces, encuentro algunas cosas interesantes y quiero compartir esos hallazgos.</p>
-			<hr>
-			<footer>
-				<p><a href="/curated/">Saber mas</a></p>
-			</footer>
-		</article>
-		<article class="projects__project">
-			<header>
-				<h1>Contenido original</h1>
-			</header>
-			<p>Siempre me gustó escribir asi que ¿por qué no aprovechar este espacio y escribir sobre temáticas que me interesen?</p>
-			<hr>
-			<footer>
-				<p><a href="/blog/">Saber mas</a></p>
-			</footer>
-		</article>
-		<article class="projects__project">
-			<header>
-				<h1>[<abbr title="To Be Defined" lang="en">TBD</abbr>] Consultoría</h1>
-			</header>
-			<p>Consultoría sobre programación, diseño de sistemas, gestión Agile de productos y cualquier tema en el que pueda aportar valor con mi experiencia.</p>
-		</article>
-	</section>
-</main>
-<footer class="contact --dark">
-	<header>
-		<h1>Contacto</h1>
 	</header>
-	<ul class="contact__list">
-		<li class="contact__item"><a href="mailto:me@iyaki.ar">me@iyaki.ar</a></li>
-		<li class="contact__item"><a href="https://www.linkedin.com/in/ivan-yakimovicz/">Linkedin</a></li>
-		<li class="contact__item"><a href="https://github.com/iyaki" lang="en">Github</a></li>
-	</ul>
-</footer>
+	<aside class="about-panel" aria-label="Sobre este proyecto">
+		<article>
+			<h1>Este proyecto fue desarrollado con:</h1>
+			<ul>
+				<li><a href="https://code.visualstudio.com/" lang="en">Visual Studio Code</a> y mis manos para todo el código
+					<abbr title="HyperText Markup Language" lang="en">HTML</abbr> y <abbr title="Cascading Style Sheets" lang="en">CSS</abbr>.
+				</li>
+				<li><a href="https://www.notion.so/product" lang="en">Notion</a> como <abbr title="Content Management System" lang="en">CMS</abbr>.</li>
+				<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
+					comentarios de los artículos.</li>
+				<li><a href="https://nodejs.org/">Node.js</a> y algunas bibliotecas para agregar a la web los artículos
+					registrados en el <abbr title="Content Management System" lang="en">CMS</abbr> (<a href="https://github.com/iyaki/iyaki.github.io/">Código fuente</a>).</li>
+				<li><a href="https://github.com/features/actions">Github Actions</a> para automatizar el agregado de los
+					artículos.</li>
+			</ul>
+		</article>
+	</aside>
+	<main class="main-panel">
+		<header>
+			<h2 title="Timey Wimey">Recopilador de contenidos curados</h2>
+			<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
+				y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
+				proyecto: Compartir.</p>
+				<blockquote style="display:none;">
+					You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
+				</blockquote>
+			<p>Pueden filtrar, ordenar o buscar recursos de temáticas especificas desde <a href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da" target="_blank" rel="noopener">mi Notion</a>.</p>
+		</header>
+
+
+		<article>
+	<header>
+		<h1>Understanding Domain-Driven Design</h1>
+	</header>
+	<p>Desarrollo de software empresarial: comprendiendo el dominio y diseñando con base en él. ¡No necesitas frameworks, solo un marco de pruebas para asegurarte de que tu caso de uso funcione correctamente!</p>
+	<p><a href="https://compiler.blog/understanding-domain-driven-design-part-2" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>1 LOC - JavaScript utilities, in just One Line of Code!
+</h1>
+	</header>
+	<p>Mejores trucos de JavaScript y TypeScript: añade elementos entre elementos, genera un array de letras, repite un array, encuentra el índice del elemento mínimo y máximo. Aprende nuevas funciones útiles para manejar arrays.
+</p>
+	<p><a href="https://phuoc.ng/collection/1-loc/" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Design for developers
+</h1>
+	</header>
+	<p>Introducción al pensamiento de diseño para desarrolladores web: entendiendo la importancia de la experiencia del usuario y la teoría del diseño en la creación de sitios web. Aunque no quieran ser diseñadores, es crucial que los desarrolladores comprendan los briefs de diseño y sepan ponerse en la piel del usuario. Esto no solo mejorará sus portfolios, sino que también les permitirá destacarse en un mercado cada vez más competitivo.
+</p>
+	<p><a href="https://developer.mozilla.org/en-US/curriculum/core/design-for-developers/" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>An Open Letter to JavaScript Leaders Regarding Semicolons
+</h1>
+	</header>
+	<p>La correcta utilización del \n al final de una declaración es fundamental para evitar confusiones en el código. Aunque en algunos casos puede resultar útil, es importante recordar que su uso puede alterar la interpretación del programa. La consistencia y claridad en la escritura del código siempre son clave en el desarrollo de software.
+</p>
+	<p><a href="https://blog.izs.me/2010/12/an-open-letter-to-javascript-leaders-regarding/" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Eloquent JavaScript - A book about JavaScript, programming, and the wonders of the digital
+</h1>
+	</header>
+	<p>Un viaje al mundo de JavaScript, la programación y las maravillas digitales. ¡Descúbrelo en línea o adquiere tu copia en papel (3ª edición) ya! Escrito por Marijn Haverbeke, con ilustraciones de Péchane Sumi-e, Madalina Tantareanu, Antonio Perdomo Pastor, Jeff Avallone, Fabrice Creuzot y Thomas Palef. ¡Sumérgete en este mundo creativo ahora!
+</p>
+	<p><a href="https://eloquentjavascript.net/" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Shift From “Product First” to “Product Last”
+</h1>
+	</header>
+	<p>Enfocarnos en el producto no significa priorizar solo la entrega de funciones, sino en cómo satisfacer a los clientes. Debemos ganar clientes, hacerlos felices, retenerlos y generar crecimiento para nuestra empresa. Necesitamos poner las necesidades del usuario primero, no solo centrarnos en el producto. ¿Estamos realmente entregando valor y satisfaciendo a nuestros clientes, o solo contando funciones y plazos?
+</p>
+	<p><a href="https://rbefored.com/shift-from-product-first-to-product-last-726e0ea64a67" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Continuous Integration</h1>
+	</header>
+	<p>Explorando la Integración Continua desde otra perspectiva: considerando diferentes estrategias para manejar el branching. Este artículo analiza el propósito del branching, qué significa integrar correctamente y el valor de la integración de alta frecuencia. No se trata tanto de un cómo hacerlo bien, sino de examinar el contexto más amplio de la Integración Continua con diversos patrones de branching.</p>
+	<p><a href="https://martinfowler.com/articles/continuousIntegration.html" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Navigating around in your shell</h1>
+	</header>
+	<p>Navega por tu shell de manera rápida y eficiente: trucos y consejos para dominar la navegación en directorios y maximizar tu productividad.</p>
+	<p><a href="https://blog.meain.io/2023/navigating-around-in-shell/" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>Have Concerns And Commit
+</h1>
+	</header>
+	<p>Tomando decisiones de arriba hacia abajo: cómo comunicar una decisión con la que no estás de acuerdo. La clave es comprometerse en el proceso y luego describirlo claramente. La comunicación asertiva es fundamental para mantener la cultura empresarial intacta.
+</p>
+	<p><a href="https://staysaasy.com/leadership/2024/04/04/have-concerns-and-commit.html" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+		<article>
+	<header>
+		<h1>30 Core Competencies Examples & How to Assess Them</h1>
+	</header>
+	<p>Las competencias centrales de una empresa le proporcionan las habilidades esenciales y rasgos de personalidad que la hacen única y exitosa. Son como una "salsa secreta", transformando estructuras corporativas sin sabor en comunidades prósperas y distintivas. Sin embargo, para aprovechar el poder de esa "salsa secreta", primero debes entender los ingredientes. ¿Cuáles son las competencias de tu personal? Si no las conoces, contratar es como lanzar los dados.
+</p>
+	<p><a href="https://toggl.com/blog/core-competencies-examples" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+</article>
+
+		<hr>
+
+
+	</main>
+	<aside class="advertisements-panel" aria-label="Panel de publicidad (coming soon)">
+		<article>
+			<p></p>
+		</article>
+		<article>
+			<p></p>
+		</article>
+	</aside>
+
+	<aside class="contact-panel" aria-label="Información de contacto">
+		<h1 class="contact__title">Contacto</h1>
+		<address>
+			<ul class="contact__list">
+				<li>
+					<a href="mailto:me@iyaki.ar" target="_blank">
+						<iconify-icon icon="mdi:email-outline" height="30"></iconify-icon>
+						me@iyaki.ar
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/in/ivan-yakimovicz/" lang="en" target="_blank">
+						<iconify-icon icon="mdi:linkedin" height="30"></iconify-icon>
+						Linkedin
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/iyaki" lang="en" target="_blank">
+						<iconify-icon icon="mdi:github" height="30"></iconify-icon>
+						Github
+					</a>
+				</li>
+				<li>
+					<a href="/feed.xml" lang="en" target="_blank">
+						<iconify-icon icon="mdi:rss-box" height="30"></iconify-icon>
+						Feed RSS
+					</a>
+				</li>
+			</ul>
+		</address>
+	</aside>
 
 
 </body>
+
 </html>

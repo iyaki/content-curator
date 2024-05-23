@@ -1,72 +1,100 @@
----
-layout: default.html
-date: "2023-10-05T09:42:49-03:00"
-titleOverride: iyaki - Allons-y!
-stylesheet: /css/index.css
----
-<header id="welcome" class="titles --dark">
-	<div class="titles__container">
-		<div>
-			<h1 class="titles__h1"><span class="titles__h1--hola">Hola!</span>&nbsp;&nbsp;Soy Iván Yaki</h1>
-			<h2 class="titles__h2">Y esta es mí página web personal</h2>
-			<h3 class="titles__h3">Pueden encontrar mas información sobre mí <a href="/about" title="Sobre mí">aquí</a></h3>
-		</div>
-	</div>
-	<div class="chevron-arrow-down" title="Allons-y!"></div>
-</header>
-<main class="main-content">
-	<section>
-		<article>
-			<h1 id="about-this">Sobre este sitio</h1>
-			<p>Hace algún tiempo compré en <a href="https://nic.ar/" title="Network Information Center Argentina">NIC Argentina</a> el dominio <i>iyaki.ar</i>. El primer paso obvio luego de eso era montar una página web (y si sobraba tiempo configurar un servidor de correo electrónico).</p>
-			<p>Después de múltiples búsquedas en Google sobre servicios de <span title="Alojamiento para sitios web"><i lang="en">hosting</i></span> y demás terminé creando esta página utilizando:</p>
-			<ul>
-				<li><a href="https://pages.github.com/" lang="en">Github Pages</a> para el alojamiento web.</li>
-				<li><a href="https://www.cloudflare.com/" lang="en">Cloudflare</a> para el registro de los <abbr title="Domain Name System" lang="en">DNS</abbr> y <abbr title="Content Delivery Network" lang="en">CDN</abbr>.</li>
-				<li>Mis manos y el <a href="https://code.visualstudio.com/" lang="en">Visual Studio Code</a> (con algunas extensiones) para escribir el <a href="https://github.com/iyaki/iyaki.github.io">código fuente de esta página</a>.</li>
-				<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">Eleventy</a> para pre-procesar el HTML de manera estática y poder reutilizar código.</li>
-			</ul>
-			<p><del>Eso es todo. No hay paso de compilación o transpilación, no hay <i lang="en">frameworks</i>, ni siquiera bibliotecas de <abbr title="Cascading Style Sheets" lang="en">CSS</abbr> o <abbr title="JavaScript" lang="en">JS</abbr>.</del> (<a href="/posts/20231127_migrando_ando/">Post, explicando las razones de este cambio</a>)</p>
-			<p>En esta primer versión de la página eso puede parecer una obviedad, pero mi intención es seguir desarrollandola de manera incremental y agregando, paulatinamente; estilos, funcionalidad y nuevas secciones.
-			</p>
-			<p>Por el momento me centro, principalmente, en que el uso de los elementos <abbr title="HyperText Markup Language" lang="en">HTML</abbr> sea semánticamente adecuado y <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" hreflang="en">accesible</a>.</p>
-			<br>
-			<p>Mi objetivo al crear esta página no es contar con un portfolio para agregar en mi <abbr title="Curriculum Vitae" lang="la">CV</abbr> sino poder compartir mis experiencias y vivencias.</p>
-			<p>Si algo de lo que ven les interesa; tienen sugerencias, criticas o cualquier comentario pueden escribirme a: <a href="mailto:me@iyaki.ar">me@iyaki.ar</a> (finalmente no configure un servidor de correo electrónico pero sí un sistema de redirección y envío de <i>e-mails</i> utilizando los servicios de <a href="https://www.cloudflare.com/es-es/products/email-routing/" lang="en">Cloudflare Email Routing</a> y <a href="https://www.zoho.com/es-xl/mail/" lang="en">Zoho Mail</a>, respectivamente).
-			</p>
-		</article>
-	</section>
-	<section id="projects" class="projects">
-		<h1>Proyectos</h1>
-		<p>Ademas de esta humilde <i lang="en">landing page</i> hay otros proyectos que mantengo bajo el ala de <i>iyaki.ar</i>.
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+	<title>Recopilador de contenidos curados | iyaki</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Artículos y páginas que encuentro interesantes">
+	<meta name="author" content="Ivan Yakimovicz">
+	<meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki, recopilador de contenidos curados, curator, curated, knowledge base">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+	<meta name="theme-color" content="#ffffff">
+	<link href="/css/index.css" rel="stylesheet">
+	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+	<!-- TODO: Agregar metricas -->
+
+</head>
+
+<body>
+	<header class="header-panel">
+		<a href="https://iyaki.ar/" title="Inicio" class="logo">
+			<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con film azul y rojo" title="Allons-y!" async style="height: 10em;">
+		</a>
+		<h1>Colección de recursos de <abbr title="Information Technology" lang="en">IT</abbr> y afines</h1>
+		<p>
+			Aquí recopilo artículos que me resultan útiles o interesantes.
 		</p>
-		<article class="projects__project">
-			<header>
-				<h1>Recopilador de contenidos curados</h1>
-			</header>
-			<p>Leo muchos artículos de distintas fuentes todos los días. lo hago utilizando <a href="https://feedly.com/"
-					lang="en">Feedly</a> y suscribiendome a múltiples <i lang="en">feeds <abbr title="Really Simple Syndication">RSS</abbr></i>. De todo lo que leo, a veces, encuentro algunas cosas interesantes y quiero compartir esos hallazgos.</p>
-			<hr>
-			<footer>
-				<p><a href="/curated/">Saber mas</a></p>
-			</footer>
+	</header>
+	<aside class="about-panel" aria-label="Sobre este proyecto">
+		<article>
+			<h1>Este proyecto fue desarrollado con:</h1>
+			<ul>
+				<li><a href="https://code.visualstudio.com/" lang="en">Visual Studio Code</a> y mis manos para todo el código
+					<abbr title="HyperText Markup Language" lang="en">HTML</abbr> y <abbr title="Cascading Style Sheets"
+						lang="en">CSS</abbr>.
+				</li>
+				<li><a href="https://www.notion.so/product" lang="en">Notion</a> como <abbr title="Content Management System"
+						lang="en">CMS</abbr>.</li>
+				<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a 						href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
+					comentarios de los artículos.</li>
+				<li><a href="https://nodejs.org/">Node.js</a> y algunas bibliotecas para agregar a la web los artículos
+					registrados en el <abbr title="Content Management System" lang="en">CMS</abbr> (<a 						href="https://github.com/iyaki/iyaki.github.io/">Código fuente</a>).</li>
+				<li><a href="https://github.com/features/actions">Github Actions</a> para automatizar el agregado de los
+					artículos.</li>
+			</ul>
 		</article>
-		<article class="projects__project">
-			<header>
-				<h1>Contenido original</h1>
-			</header>
-			<p>Siempre me gustó escribir asi que ¿por qué no aprovechar este espacio y escribir sobre temáticas que me interesen?</p>
-			<hr>
-			<footer>
-				<p><a href="/blog/">Saber mas</a></p>
-			</footer>
+	</aside>
+	<main class="main-panel">
+		<header>
+			<h2 title="Timey Wimey">Recopilador de contenidos curados</h2>
+			<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
+				y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
+				proyecto: Compartir.</p>
+				<blockquote style="display: none;">
+					You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
+				</blockquote>
+			<p>Pueden filtrar, ordenar o buscar recursos de temáticas especificas desde <a 					href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da"
+					target="_blank" rel="noopener">mi Notion</a>.</p>
+		</header>
+		{% assign curatedContent = collections.curatedContent | reverse | slice: 0, 10 %}
+		{% for entry in curatedContent %}
+		{{ entry.content }}
+		<hr>
+		{% endfor %}
+		</section>
+	</main>
+	<aside class="advertisements-panel" aria-label="Panel de publicidad (coming soon)">
+		<article>
+			<p></p>
 		</article>
-		<article class="projects__project">
-			<header>
-				<h1>[<abbr title="To Be Defined" lang="en">TBD</abbr>] Consultoría</h1>
-			</header>
-			<p>Consultoría sobre programación, diseño de sistemas, gestión Agile de productos y cualquier tema en el que pueda aportar valor con mi experiencia.</p>
+		<article>
+			<p></p>
 		</article>
-	</section>
-</main>
-{% include 'footer-contacto.html' %}
+	</aside>
+
+	<aside class="contact-panel" aria-label="Información de contacto">
+		<h1 class="contact__title">Contacto</h1>
+		<address>
+			<ul class="contact__list">
+				<li><a href="mailto:me@iyaki.ar" target="_blank">
+					<iconify-icon icon="mdi:email-outline" height="30"></iconify-icon>
+					me@iyaki.ar
+				</a></li>
+				<li><a href="https://github.com/iyaki/content-curator" lang="en" target="_blank">
+					<iconify-icon icon="mdi:github" height="30"></iconify-icon>
+					Github
+				</a></li>
+				<li><a href="/feed.xml" lang="en" target="_blank">
+					<iconify-icon icon="mdi:rss-box" height="30"></iconify-icon>
+					Feed RSS
+				</a></li>
+			</ul>
+		</address>
+	</aside>
+
+</body>
+
+</html>

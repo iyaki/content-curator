@@ -1,4 +1,0 @@
-Sitemap: https://iyaki.ar/sitemap.xml
-
-User-agent: *
-Disallow:

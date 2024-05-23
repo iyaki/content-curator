@@ -4,11 +4,8 @@ module.exports = eleventyConfig => {
 
 	eleventyConfig.addPlugin(require('./production-eleventy.js'));
 
-	eleventyConfig.addPassthroughCopy(BASE_PATH + '/robots.txt')
-	eleventyConfig.addPassthroughCopy(BASE_PATH + '/ads.txt')
-	// eleventyConfig.addPassthroughCopy(BASE_PATH + '/css')
 	eleventyConfig.addPassthroughCopy(BASE_PATH + '/images')
-	eleventyConfig.addPassthroughCopy(BASE_PATH + '/**/*.{png,jpg,jpeg,svg,webp,avif,mp4,mp3,ogg}')
+	eleventyConfig.addPassthroughCopy(BASE_PATH + '/**/*.{png,jpg,jpeg,svg,webp,avif}')
 
 	return {
 		dir: {

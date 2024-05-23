@@ -2,7 +2,7 @@ import fs from 'fs'
 
 // TODO: Agregar propagandas
 
-const DESTINATION_DIR = '../web/src/curated/entries'
+const DESTINATION_DIR = '../web/src/entries'
 
 const HTML_TEMPLATE = fs.readFileSync('./templates/entry.html', { encoding: 'utf8' })
 

@@ -20,6 +20,8 @@ jobs:
         run: curator/curate.sh
       - name: publish
         run: |
-          cd web && npm install --save-exact
-          npm run build
+          cd web
+          npm install --save-exact
+          ./publish.sh
+
       - uses: stefanzweifel/git-auto-commit-action@v5
