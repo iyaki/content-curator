@@ -57,9 +57,15 @@
 				</ul>
 			</details>
 		</header>
-		{% assign curatedContent = collections.curatedContent | reverse | slice: 0, 10 %}
-		{% for entry in curatedContent %}
-		{{ entry.content }}
+		{% assign entries = collections.entries | reverse | slice: 0, 10 %}
+		{% for entry in entries %}
+		<article>
+			<header>
+				<h1>{{ entry.data.title }}</h1>
+			</header>
+			<p>{{ entry.data.comment }}</p>
+			<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
+		</article>
 		<hr>
 		{% endfor %}
 		</section>
