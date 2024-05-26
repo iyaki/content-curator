@@ -15,7 +15,7 @@ export function addArticle(articleData) {
 
 function hydrateTemplate(articleData) {
 	return HTML_TEMPLATE
-		.replace('{{articleTitle}}', articleData.title)
-		.replace('{{articleLink}}', articleData.url)
-		.replace('{{articleComment}}', articleData.comment)
+		.replace('{{articleTitle}}', articleData.title.replaceAll('`', '\\`'))
+		.replace('{{articleComment}}', articleData.comment.replaceAll('`', '\\`'))
+		.replace('{{articleLink}}', articleData.url.replaceAll('`', '\\`'))
 }
