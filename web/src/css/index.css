@@ -126,22 +126,45 @@ a:visited {
 
 /* ----------------- Start layout ----------------- */
 
+
+
 /* ----------------- End layout ----------------- */
 
 /* ----------------- Start components ----------------- */
 
+.header-panel {
+	text-align: center;
+	margin-bottom: 5em;
+}
+
 .logo {
 	height: 10em;
 	display: block;
-	text-align: center;
 }
 
 h1 {
 	font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-	font-weight: normal;
 	font-size: 2.2em;
 	line-height: 0.95em;
-	margin-top: 0;
+}
+
+.main-panel {
+	margin: auto 2em;
+}
+
+.main-panel > p {
+	text-align: justify;
+}
+
+.main-panel > header {
+	margin-bottom: 2em;
+}
+
+.main-panel > header > details {
+	margin-top: 1em;
+	padding: 0.5em;
+	border-radius: 15px;
+	background-color: gainsboro;
 }
 
 .main-panel > header > h2 {
@@ -151,9 +174,15 @@ h1 {
 .contact__list {
 	list-style: none;
 	padding-left: 0;
+	text-align: center;
 }
 
-.contact__list a, .contact__list a:visited, .contact__list a:hover, .contact__list a:active {
+.contact__list > li {
+	display: inline-block;
+	margin: auto 1em;
+}
+
+.contact__list :is(a, a:visited, a:hover, a:active) {
 	color: var(--text-color);
 }
 

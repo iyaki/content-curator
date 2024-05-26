@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
 	<meta name="theme-color" content="#ffffff">
-	<link href="/css/index.css" rel="stylesheet">
 	<style>
 	{% if env.ELEVENTY_RUN_MODE == "build" %}{% render 'css/index.css' %}{% else %}@import '/css/index.css';{% endif %}
 	</style>
@@ -27,9 +26,7 @@
 			<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con film azul y rojo" title="Allons-y!" async style="height: 10em;">
 		</a>
 		<h1>Colección de recursos de IT y afines</h1>
-		<p>
-			Aquí recopilo artículos que me resultan útiles o interesantes.
-		</p>
+		<p>Aquí recopilo artículos que me resultan útiles o interesantes.</p>
 	</header>
 	<main class="main-panel">
 		<header>
@@ -38,9 +35,8 @@
 				target="_blank" rel="noopener">mi Notion</a>, que sirve como origen de todos los artículos mostrados en esta web.</p>
 			<details>
 				<summary>Saber mas</summary>
-				<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
-					y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
-					proyecto: Compartir.</p>
+				<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este proyecto: Compartir.</p>
+				<p>Si les interesa conocer otros de mis proyectos o más acerca de mí, puede visitar <a href="https://iyaki.ar/">mi sitio web personal</a>.</p>
 				<blockquote style="display: none;" lang="en">
 					You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
 				</blockquote>
@@ -57,6 +53,7 @@
 				</ul>
 			</details>
 		</header>
+		<hr>
 		{% assign entries = collections.entries | reverse | slice: 0, 20 %}
 		{% for entry in entries %}
 		<article>
