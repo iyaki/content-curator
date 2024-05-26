@@ -6,11 +6,11 @@ Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoi
 :root {
 	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
 	font-size: var(--base-font-size, 16px);
-	--base-font-size: 16px;
-	--main-content-width: 50ch;
+	--base-font-size: 18px;
+	--main-content-width: 60ch;
 
 	@media screen and (min-width: 1400px) {
-			--base-font-size: 21px;
+		--base-font-size: 23px;
 	}
 
 	color-scheme: light dark;
@@ -68,6 +68,7 @@ html {
 }
 
 body {
+	margin: 0;
 	min-height: 100vh;
 	line-height: 1.5;
 	background-color: var(--background-color);
@@ -126,16 +127,72 @@ a:visited {
 
 /* ----------------- Start layout ----------------- */
 
+.header-panel {
+	text-align: center;
+	margin-bottom: 3em;
+}
 
+.header-panel h1 {
+	margin-top: 0;
+}
+
+.main-panel {
+	margin: auto 1em;
+	text-align: center;
+}
+.main-panel * {
+	text-align: initial;
+}
+
+.main-panel > header {
+	display: inline-block;
+	max-width: calc(var(--main-content-width) + 6em);
+	margin-bottom: 2em;
+}
+.main-panel > article {
+	display: inline-block;
+	max-width: var(--main-content-width);
+}
+
+.main-panel > hr {
+	max-width: calc(var(--main-content-width) + 8em);
+}
+
+@media screen and (min-width: 768px) {
+	body {
+		display: grid;
+		grid-template-columns: 2fr 5fr 2fr;
+		grid-template-areas: ". main advertisements";
+		gap: 1em;
+	}
+
+	.header-panel {
+		position: fixed;
+		position: sticky;
+		height: fit-content;
+		top: 0;
+		text-align: left;
+		padding-left: 1em;
+	}
+
+	.main-panel {
+		grid-area: main;
+	}
+
+	.advertisements-panel {
+		grid-area: advertisements;
+	}
+
+	.contact-panel {
+		position: fixed;
+		position: sticky;
+		bottom: 0;
+	}
+}
 
 /* ----------------- End layout ----------------- */
 
 /* ----------------- Start components ----------------- */
-
-.header-panel {
-	text-align: center;
-	margin-bottom: 5em;
-}
 
 .logo {
 	height: 10em;
@@ -148,27 +205,24 @@ h1 {
 	line-height: 0.95em;
 }
 
-.main-panel {
-	margin: auto 2em;
-}
-
-.main-panel > p {
+.main-panel p {
 	text-align: justify;
-}
-
-.main-panel > header {
-	margin-bottom: 2em;
-}
-
-.main-panel > header > details {
-	margin-top: 1em;
-	padding: 0.5em;
-	border-radius: 15px;
-	background-color: gainsboro;
+	text-wrap: pretty;
 }
 
 .main-panel > header > h2 {
 	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+}
+
+.main-panel > header > details {
+	margin-top: 1em;
+	padding: 0.5em 1.5em;
+	border-radius: 15px;
+	background-color: gainsboro;
+}
+
+.main-panel > article h3 {
+	font-size: 1.5em;
 }
 
 .contact__list {
@@ -180,6 +234,10 @@ h1 {
 .contact__list > li {
 	display: inline-block;
 	margin: auto 1em;
+
+	@media screen and (min-width: 768px) {
+		display: block;
+	}
 }
 
 .contact__list :is(a, a:visited, a:hover, a:active) {
