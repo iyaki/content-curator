@@ -3,6 +3,7 @@ Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoi
 
 
 :root {
+	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
 	font-size: var(--base-font-size, 16px);
 	--base-font-size: 16px;
 	--main-content-width: 50ch;
@@ -54,6 +55,7 @@ Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoi
 }
 
 body {
+	margin: 0;
 	background-color: var(--background-color);
 	color: var(--text-color);
 }
@@ -70,52 +72,26 @@ a:visited {
 	color: var(--link-visited-color);
 }
 
-body {
-	margin: 0;
-	height: 100vh;
-	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-	font-weight: normal;
-	display: flex;
-	flex-flow: column wrap;
-	justify-content: space-between;
-	align-items: start;
-	align-content: space-around;
-}
-
 p {
 	letter-spacing: 0.03em;
 }
 
-.header-panel {
-	.logo {
-		height: 10em;
-		display: block;
-		text-align: center;
-	}
+.logo {
+	height: 10em;
+	display: block;
+	text-align: center;
+}
 
-	h1 {
-		font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-		font-weight: normal;
-		font-size: 2.2em;
-		line-height: 0.95em;
-		margin-top: 0;
-	}
+h1 {
+	font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+	font-weight: normal;
+	font-size: 2.2em;
+	line-height: 0.95em;
+	margin-top: 0;
 }
 
 .main-panel > header > h2 {
 	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-}
-
-.main-panel {
-	padding: 0 2em;
-}
-
-.main-panel > header {
-	margin-bottom: 5rem;
-}
-
-.main-panel > section > article {
-	margin: 2.5em 0;
 }
 
 .contact__list {
@@ -132,74 +108,13 @@ p {
 	align-items: stretch;
 }
 
-@media screen and (min-width: 992px) {
-	.header-panel {
-		order: 0;
-		max-width: 15rem;
-		height: fit-content;
-	}
 
-	.main-panel {
-		order: 2;
-		width: var(--main-content-width);
-		overflow-y: auto;
-	}
 
-	.about-panel {
-		order: 3;
-		max-width: 15rem;
-	}
-
-	.advertisements-panel {
-		order: 4;
-		margin-bottom: 5rem;
-	}
-
-	.contact-panel {
-		order: 1;
-		margin-bottom: 1rem;
-	}
-}
-
-@media screen {
-	.contact__title {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 991.98px) {
-	body {
-		padding: 0 1em;
-		flex-flow: column nowrap;
-		align-items: center;
-	}
-
-	.header-panel {
-		text-align: center;
-	}
-
-	.main-panel h2 {
-		text-align: center;
-	}
-
-	.about-panel {
-		display: none;
-	}
-
-	.advertisements-panel {
-		/* margin-bottom: 5rem; */
-	}
-
-	.contact-panel {
-		text-align: center;
-	}
-
-	.contact-panel ul{
-		list-style-type: none;
-		padding: 0;
-	}
-
-	.contact-panel ul > li {
-		margin-top: 0.5em;
-	}
+.sr-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
