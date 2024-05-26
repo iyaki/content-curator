@@ -41,7 +41,7 @@ module.exports = eleventyConfig => {
 			return content
 		}
 
-		if( !(this.page?.outputPath.endsWith(".html")) ) {
+		if( !(this.page.outputPath && this.page.outputPath.endsWith(".html")) ) {
 			return content
 		}
 
