@@ -15,7 +15,7 @@ eleventyExcludeFromCollections: true
 			<title>Recopilador de contenidos curados | iyaki</title>
 			<link>{{ site.url }}/</link>
 		</image>
-		{% assign articles = collections.curatedContent | reverse | slice: 0, 20 %}
+		{% assign articles = collections.entries | reverse | slice: 0, 20 %}
 		{% for article in articles %}
 			<item>
 				<title><![CDATA[{{ article.data.title }}]]></title>
