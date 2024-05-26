@@ -17,11 +17,8 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: curator/curate.sh
-      - name: publish
         run: |
-          cd web
+          cd curator
           npm install --save-exact
-          ./publish.sh
-
+          curator/curate.sh
       - uses: stefanzweifel/git-auto-commit-action@v5

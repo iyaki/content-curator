@@ -13,12 +13,6 @@ updates:
     schedule:
       interval: monthly
 
-  # poster
-  - package-ecosystem: npm
-    directory: "/poster/"
-    schedule:
-      interval: monthly
-
   # web
   - package-ecosystem: npm
     directory: "/web/"
