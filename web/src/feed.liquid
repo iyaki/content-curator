@@ -1,5 +1,5 @@
 ---
-permalink: /curated/feed.xml
+permalink: /feed.xml
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
@@ -7,15 +7,15 @@ eleventyExcludeFromCollections: true
 	<channel>
 		<title>Recopilador de contenidos curados | iyaki</title>
 		<description>Artículos que me resultan útiles o interesantes</description>
-		<link>{{ site.url }}/curated/</link>
+		<link>{{ site.url }}/</link>
 		<language>es</language>
-		<atom:link href="{{ site.url }}/curated/feed.xml" rel="self" type="application/rss+xml" />
+		<atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
 		<image>
 			<url>{{ site.url }}/images/logo.png</url>
 			<title>Recopilador de contenidos curados | iyaki</title>
-			<link>{{ site.url }}/curated/</link>
+			<link>{{ site.url }}/</link>
 		</image>
-		{% assign articles = collections.curatedContent | reverse | slice: 0, 10 %}
+		{% assign articles = collections.curatedContent | reverse | slice: 0, 20 %}
 		{% for article in articles %}
 			<item>
 				<title><![CDATA[{{ article.data.title }}]]></title>

@@ -41,28 +41,28 @@
 				<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
 					y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
 					proyecto: Compartir.</p>
-				<blockquote style="display: none;">
+				<blockquote style="display: none;" lang="en">
 					You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
 				</blockquote>
 
-				<h3>Este proyecto fue desarrollado con:</h3>
+				<h3>Este proyecto utiliza:</h3>
 				<ul>
-					<li><a href="https://www.notion.so/product" lang="en">Notion</a> como <abbr title="Content Management System"
+					<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">11ty</a> como <span lang="en">static site generator</span>.</li>
+					<li><a href="https://www.notion.so/product" lang="en" hreflang="en">Notion</a> como <abbr title="Content Management System"
 							lang="en">CMS</abbr>.</li>
 					<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
 						comentarios de los artículos.</li>
-					<li><a href="https://nodejs.org/">Node.js</a> y algunas bibliotecas para agregar a la web los artículos
-						registrados en Notion (<a href="https://github.com/iyaki/content-curator">Código fuente</a>).</li>
-					<li><a href="https://github.com/features/actions">Github Actions</a> para automatizar el agregado de los
-						artículos.</li>
+					<li><a href="https://nodejs.org/" lang="en" hreflang="en">Node.js</a> y algunas bibliotecas para agregar a la web los artículos registrados en <span lang="en">Notion</span> (<a href="https://github.com/iyaki/content-curator">Código fuente</a>).</li>
+					<li><a href="https://github.com/features/actions" lang="en" hreflang="en">Github Actions</a> para automatizar el agregado de los artículos.</li>
 				</ul>
 			</details>
 		</header>
-		{% assign entries = collections.entries | reverse | slice: 0, 10 %}
+		{% assign entries = collections.entries | reverse | slice: 0, 20 %}
 		{% for entry in entries %}
 		<article>
 			<header>
 				<h3>{{ entry.data.title }}</h3>
+				<p>{{ entry.page.date | date: "%d/%m/%Y" }}</p>
 			</header>
 			<p>{{ entry.data.comment }}</p>
 			<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>

@@ -1,6 +1,7 @@
 /* Media queries tomadas de: https://getbootstrap.com/docs/5.3/layout/breakpoints/#media-queries
 Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoints.asp */
 
+/* ----------------- Start defaults ----------------- */
 
 :root {
 	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
@@ -54,10 +55,54 @@ Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoi
 	}
 }
 
+/* Box sizing rules */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
 body {
-	margin: 0;
+	min-height: 100vh;
+	line-height: 1.5;
 	background-color: var(--background-color);
 	color: var(--text-color);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+	margin-block-end: 0;
+}
+
+/* Balance text wrapping on headings */
+h1, h2, h3, h4 {
+	text-wrap: balance;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, button, input, label {
+	line-height: 1.1;
+}
+
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+	letter-spacing: 0.03em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
 }
 
 a {
@@ -72,9 +117,18 @@ a:visited {
 	color: var(--link-visited-color);
 }
 
-p {
-	letter-spacing: 0.03em;
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+	scroll-margin-block: 5ex;
 }
+
+/* ----------------- End defaults ----------------- */
+
+/* ----------------- Start layout ----------------- */
+
+/* ----------------- End layout ----------------- */
+
+/* ----------------- Start components ----------------- */
 
 .logo {
 	height: 10em;
@@ -108,7 +162,9 @@ h1 {
 	align-items: stretch;
 }
 
+/* ----------------- End components ----------------- */
 
+/* ----------------- Start Utils ----------------- */
 
 .sr-only {
 	position: absolute;
@@ -118,3 +174,5 @@ h1 {
 	height: 1px;
 	overflow: hidden;
 }
+
+/* ----------------- End Utils ----------------- */
