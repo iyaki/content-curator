@@ -12,6 +12,9 @@
 	<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
 	<meta name="theme-color" content="#ffffff">
 	<link href="/css/index.css" rel="stylesheet">
+	<style>
+	{% if env.ELEVENTY_RUN_MODE == "build" %}{% render 'css/index.css' %}{% else %}@import '/css/index.css';{% endif %}
+	</style>
 	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
 	<!-- TODO: Agregar metricas -->
@@ -28,8 +31,6 @@
 			Aquí recopilo artículos que me resultan útiles o interesantes.
 		</p>
 	</header>
-	<aside class="about-panel" aria-label="Sobre este proyecto">
-	</aside>
 	<main class="main-panel">
 		<header>
 			<h2>Recopilador de contenidos curados</h2>
@@ -61,7 +62,7 @@
 		{% for entry in entries %}
 		<article>
 			<header>
-				<h1>{{ entry.data.title }}</h1>
+				<h3>{{ entry.data.title }}</h3>
 			</header>
 			<p>{{ entry.data.comment }}</p>
 			<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">Leer mas</a></p>
@@ -78,9 +79,8 @@
 			<p></p>
 		</article>
 	</aside>
-
 	<aside class="contact-panel" aria-label="Información de contacto">
-		<h2 class="contact__title">Contacto</h2>
+		<h2 class="sr-only">Contacto</h2>
 		<address>
 			<ul class="contact__list">
 				<li><a href="mailto:me@iyaki.ar" target="_blank">
