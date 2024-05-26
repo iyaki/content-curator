@@ -1,140 +1,205 @@
-@layer reset, defaults, pages, components, utils, overrides;
+/* Media queries tomadas de: https://getbootstrap.com/docs/5.3/layout/breakpoints/#media-queries
+Segunda opinión: https://www.w3schools.com/howto/howto_css_media_query_breakpoints.asp */
 
-@import "utils/color-schema.css" layer(defaults);
-@import "utils/sizing.css" layer(defaults);
 
-@import url('https://fonts.googleapis.com/css2?family=Arsenal:wght@700&family=Maitree:wght@400;700&family=Josefin+Sans:wght@600&text=ColeciónprsnadatíusdITyf&display=swap') layer(pages);
+:root {
+	font-size: var(--base-font-size, 16px);
+	--base-font-size: 16px;
+	--main-content-width: 50ch;
 
-@layer pages {
-	body {
-		margin: 0;
-		height: 100vh;
-		font-family: 'Maitree', serif;
-		display: flex;
-		flex-flow: column wrap;
-		justify-content: space-between;
-		align-items: start;
-		align-content: space-around;
+	@media screen and (min-width: 1400px) {
+			--base-font-size: 21px;
+	}
+
+	color-scheme: light dark;
+
+	--background-color-light: whitesmoke;
+	--text-color-light: #383838;
+	--link-color-light: steelblue;
+	--link-hover-color-light: midnightblue;
+	--link-visited-color-light: slateblue;
+	--box-border-color-light: black;
+
+	--background-color-dark: #34342f;
+	--text-color-dark: whitesmoke;
+	--link-color-dark: lightskyblue;
+	--link-hover-color-dark: deepskyblue;
+	--link-visited-color-dark: plum;
+	--box-border-color-dark: darkgray;
+
+	--background-color: Canvas;
+	--text-color: CanvasText;
+	--link-color: LinkText;
+	--link-hover-color: ActiveText;
+	--link-visited-color: VisitedText;
+	--box-border-color: ButtonBorder;
+
+	@media (prefers-color-scheme: light) {
+		--background-color: var(--background-color-light);
+		--text-color: var(--text-color-light);
+		--link-color: var(--link-color-light);
+		--link-hover-color: var(--link-hover-color-light);
+		--link-visited-color: var(--link-visited-color-light);
+		--box-border-color: var(--box-border-color-light);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		--background-color: var(--background-color-dark);
+		--text-color: var(--text-color-dark);
+		--link-color: var(--link-color-dark);
+		--link-hover-color: var(--link-hover-color-dark);
+		--link-visited-color: var(--link-visited-color-dark);
+		--box-border-color: var(--box-border-color-dark);
+	}
+}
+
+body {
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+a {
+	color: var(--link-color);
+}
+
+a:hover {
+	color: var(--link-hover-color);
+}
+
+a:visited {
+	color: var(--link-visited-color);
+}
+
+body {
+	margin: 0;
+	height: 100vh;
+	font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+	font-weight: normal;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-between;
+	align-items: start;
+	align-content: space-around;
+}
+
+p {
+	letter-spacing: 0.03em;
+}
+
+.header-panel {
+	.logo {
+		height: 10em;
+		display: block;
+		text-align: center;
 	}
 
 	h1 {
-		line-height: 1.2em;
+		font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+		font-weight: normal;
+		font-size: 2.2em;
+		line-height: 0.95em;
+		margin-top: 0;
 	}
+}
 
+.main-panel > header > h2 {
+	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+}
+
+.main-panel {
+	padding: 0 2em;
+}
+
+.main-panel > header {
+	margin-bottom: 5rem;
+}
+
+.main-panel > section > article {
+	margin: 2.5em 0;
+}
+
+.contact__list {
+	list-style: none;
+	padding-left: 0;
+}
+
+.contact__list a, .contact__list a:visited, .contact__list a:hover, .contact__list a:active {
+	color: var(--text-color);
+}
+
+.contact__list a {
+	display: flex;
+	align-items: stretch;
+}
+
+@media screen and (min-width: 992px) {
 	.header-panel {
-		.logo {
-			height: 10em;
-			display: block;
-			text-align: center;
-		}
-
-		h1 {
-			font-family: 'Josefin Sans', sans-serif;
-			font-size: 2.2em;
-			line-height: 0.95em;
-			margin-top: 0;
-		}
-	}
-
-	.main-panel > header > h2 {
-		font-family: 'Arsenal', sans-serif;
+		order: 0;
+		max-width: 15rem;
+		height: fit-content;
 	}
 
 	.main-panel {
-		padding: 0 2em;
+		order: 2;
+		width: var(--main-content-width);
+		overflow-y: auto;
 	}
 
-	.main-panel > header {
+	.about-panel {
+		order: 3;
+		max-width: 15rem;
+	}
+
+	.advertisements-panel {
+		order: 4;
 		margin-bottom: 5rem;
 	}
 
-	.main-panel > section > article {
-		margin: 2.5em 0;
+	.contact-panel {
+		order: 1;
+		margin-bottom: 1rem;
+	}
+}
+
+@media screen {
+	.contact__title {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 991.98px) {
+	body {
+		padding: 0 1em;
+		flex-flow: column nowrap;
+		align-items: center;
 	}
 
-	.contact__list {
-		list-style: none;
-		padding-left: 0;
+	.header-panel {
+		text-align: center;
 	}
 
-	.contact__list a, .contact__list a:visited, .contact__list a:hover, .contact__list a:active {
-		color: var(--text-color);
+	.main-panel h2 {
+		text-align: center;
 	}
 
-	.contact__list a {
-		display: flex;
-		align-items: stretch;
+	.about-panel {
+		display: none;
 	}
 
-	@media screen and (min-width: 992px) {
-		.header-panel {
-			order: 0;
-			max-width: 15rem;
-			height: fit-content;
-		}
-
-		.main-panel {
-			order: 2;
-			width: var(--main-content-width);
-			overflow-y: auto;
-		}
-
-		.about-panel {
-			order: 3;
-			max-width: 15rem;
-		}
-
-		.advertisements-panel {
-			order: 4;
-			margin-bottom: 5rem;
-		}
-
-		.contact-panel {
-			order: 1;
-			margin-bottom: 1rem;
-		}
+	.advertisements-panel {
+		/* margin-bottom: 5rem; */
 	}
 
-	@media screen {
-		.contact__title {
-			display: none;
-		}
+	.contact-panel {
+		text-align: center;
 	}
 
-	@media screen and (max-width: 991.98px) {
-		body {
-			padding: 0 1em;
-			flex-flow: column nowrap;
-			align-items: center;
-		}
+	.contact-panel ul{
+		list-style-type: none;
+		padding: 0;
+	}
 
-		.header-panel {
-			text-align: center;
-		}
-
-		.main-panel h2 {
-			text-align: center;
-		}
-
-		.about-panel {
-			display: none;
-		}
-
-		.advertisements-panel {
-			/* margin-bottom: 5rem; */
-		}
-
-		.contact-panel {
-			text-align: center;
-		}
-
-		.contact-panel ul{
-			list-style-type: none;
-			padding: 0;
-		}
-
-		.contact-panel ul > li {
-			margin-top: 0.5em;
-		}
+	.contact-panel ul > li {
+		margin-top: 0.5em;
 	}
 }

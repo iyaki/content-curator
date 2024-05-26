@@ -23,41 +23,39 @@
 		<a href="https://iyaki.ar/" title="Inicio" class="logo">
 			<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con film azul y rojo" title="Allons-y!" async style="height: 10em;">
 		</a>
-		<h1>Colección de recursos de <abbr title="Information Technology" lang="en">IT</abbr> y afines</h1>
+		<h1>Colección de recursos de IT y afines</h1>
 		<p>
 			Aquí recopilo artículos que me resultan útiles o interesantes.
 		</p>
 	</header>
 	<aside class="about-panel" aria-label="Sobre este proyecto">
-		<article>
-			<h1>Este proyecto fue desarrollado con:</h1>
-			<ul>
-				<li><a href="https://code.visualstudio.com/" lang="en">Visual Studio Code</a> y mis manos para todo el código
-					<abbr title="HyperText Markup Language" lang="en">HTML</abbr> y <abbr title="Cascading Style Sheets"
-						lang="en">CSS</abbr>.
-				</li>
-				<li><a href="https://www.notion.so/product" lang="en">Notion</a> como <abbr title="Content Management System"
-						lang="en">CMS</abbr>.</li>
-				<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a 						href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
-					comentarios de los artículos.</li>
-				<li><a href="https://nodejs.org/">Node.js</a> y algunas bibliotecas para agregar a la web los artículos
-					registrados en el <abbr title="Content Management System" lang="en">CMS</abbr> (<a 						href="https://github.com/iyaki/iyaki.github.io/">Código fuente</a>).</li>
-				<li><a href="https://github.com/features/actions">Github Actions</a> para automatizar el agregado de los
-					artículos.</li>
-			</ul>
-		</article>
 	</aside>
 	<main class="main-panel">
 		<header>
-			<h2 title="Timey Wimey">Recopilador de contenidos curados</h2>
-			<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
-				y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
-				proyecto: Compartir.</p>
+			<h2>Recopilador de contenidos curados</h2>
+			<p>Para filtrar, ordenar o buscar recursos de temáticas especificas pueden utilizar <a href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da"
+				target="_blank" rel="noopener">mi Notion</a>, que sirve como origen de todos los artículos mostrados en esta web.</p>
+			<details>
+				<summary>Saber mas</summary>
+				<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día
+					y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este
+					proyecto: Compartir.</p>
 				<blockquote style="display: none;">
 					You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
 				</blockquote>
-			<p>Pueden filtrar, ordenar o buscar recursos de temáticas especificas desde <a 					href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da"
-					target="_blank" rel="noopener">mi Notion</a>.</p>
+
+				<h3>Este proyecto fue desarrollado con:</h3>
+				<ul>
+					<li><a href="https://www.notion.so/product" lang="en">Notion</a> como <abbr title="Content Management System"
+							lang="en">CMS</abbr>.</li>
+					<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
+						comentarios de los artículos.</li>
+					<li><a href="https://nodejs.org/">Node.js</a> y algunas bibliotecas para agregar a la web los artículos
+						registrados en Notion (<a href="https://github.com/iyaki/content-curator">Código fuente</a>).</li>
+					<li><a href="https://github.com/features/actions">Github Actions</a> para automatizar el agregado de los
+						artículos.</li>
+				</ul>
+			</details>
 		</header>
 		{% assign curatedContent = collections.curatedContent | reverse | slice: 0, 10 %}
 		{% for entry in curatedContent %}
@@ -76,7 +74,7 @@
 	</aside>
 
 	<aside class="contact-panel" aria-label="Información de contacto">
-		<h1 class="contact__title">Contacto</h1>
+		<h2 class="contact__title">Contacto</h2>
 		<address>
 			<ul class="contact__list">
 				<li><a href="mailto:me@iyaki.ar" target="_blank">
