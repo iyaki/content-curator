@@ -13,8 +13,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Dependencies setup
-        run: cd curator && npm install --save-exact
       - name: curate
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
@@ -22,5 +20,5 @@ jobs:
         run: |
           cd curator
           npm install --save-exact
-          curator/curate.sh
+          ./curate.sh
       - uses: stefanzweifel/git-auto-commit-action@v5
