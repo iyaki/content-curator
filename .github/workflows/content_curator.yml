@@ -26,3 +26,5 @@ jobs:
           OUTPUT="$(./curate.sh)"
           echo "newArticles=${OUTPUT}" >> "$GITHUB_OUTPUT"
       - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add curated entries"
