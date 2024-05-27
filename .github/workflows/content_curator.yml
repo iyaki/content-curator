@@ -8,17 +8,21 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.curate.outputs.curate }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: curate
+      - id: curate
+        name: curate
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           cd curator
           npm install --save-exact
-          ./curate.sh
+          OUTPUT="$(./curate.sh)"
+          echo "newArticles=${OUTPUT}" >> "$GITHUB_OUTPUT"
       - uses: stefanzweifel/git-auto-commit-action@v5
