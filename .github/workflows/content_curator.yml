@@ -8,8 +8,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.curate.outputs.curate }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,8 +21,7 @@ jobs:
         run: |
           cd curator
           npm install --save-exact
-          OUTPUT="$(./curate.sh)"
-          echo "newArticles=${OUTPUT}" >> "$GITHUB_OUTPUT"
+          ./curate.sh
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Add curated entries"

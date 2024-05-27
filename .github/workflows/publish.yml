@@ -36,12 +36,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: test previous output
-        env:
-          MY_ENV_VAR: ${{ toJSON(github.event.workflow_run) }}
-        run: echo "${MY_ENV_VAR}"
       - name: Checkout
         uses: actions/checkout@v4
         with:
