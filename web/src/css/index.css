@@ -240,13 +240,18 @@ h1 {
 	}
 }
 
+.contact__list a {
+	display: flex;
+	align-items: stretch;
+	text-decoration: none;
+}
+
 .contact__list :is(a, a:visited, a:hover, a:active) {
 	color: var(--text-color);
 }
 
-.contact__list a {
-	display: flex;
-	align-items: stretch;
+.contact__list svg {
+	height: min-content;
 }
 
 /* ----------------- End components ----------------- */
