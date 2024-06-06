@@ -216,9 +216,28 @@ h1 {
 
 .main-panel > header > details {
 	margin-top: 1em;
-	padding: 0.5em 1.5em;
+	padding: 0.5em;
 	border-radius: 15px;
 	background-color: gainsboro;
+}
+
+.main-panel header details summary {
+	padding: 0 1em;
+	border-radius: 0.25em;
+
+	span {
+		transition: padding-left 0.5s;
+		display: inline-block;
+		padding: 0.25em 0;
+	}
+}
+
+.main-panel header details summary:hover {
+	background-color: lightgray;
+
+	span {
+		padding-left: 0.5em;
+	}
 }
 
 .main-panel > article h3 {
