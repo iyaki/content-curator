@@ -12,6 +12,6 @@
     "minify-xml": "^4.4.1",
     "postcss": "^8.4.39",
     "postcss-html": "^1.7.0",
-    "postcss-preset-env": "^9.5.15"
+    "postcss-preset-env": "^9.6.0"
   }
 }
