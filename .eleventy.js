@@ -1,6 +1,6 @@
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 module.exports = eleventyConfig => {
-	const BASE_PATH = 'src';
+	const BASE_PATH = 'web';
 
 	eleventyConfig.addPlugin(require('./production-eleventy.js'));
 
