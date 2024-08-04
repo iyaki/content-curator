@@ -43,7 +43,6 @@ jobs:
           fetch-depth: '0'
       - name: build
         run: |
-          cd web
           npm install --save-exact
           npm run build
       - name: Setup Pages
@@ -51,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './web/_site'
+          path: './_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
