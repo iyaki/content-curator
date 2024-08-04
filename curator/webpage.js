@@ -18,4 +18,5 @@ function hydrateTemplate(articleData) {
 		.replace('{{articleTitle}}', articleData.title.replaceAll('`', '\\`'))
 		.replace('{{articleComment}}', articleData.comment.replaceAll('`', '\\`'))
 		.replace('{{articleLink}}', articleData.url.replaceAll('`', '\\`'))
+		.replace('{{articleDate}}', (new Date).toISOString())
 }
