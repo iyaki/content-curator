@@ -7,7 +7,7 @@
   "author": "iyaki",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "cssnano": "^7.0.5",
+    "cssnano": "^7.0.6",
     "html-minifier-terser": "^7.2.0",
     "minify-xml": "^4.5.2",
     "postcss": "^8.4.42",
