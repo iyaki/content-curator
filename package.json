@@ -6,7 +6,7 @@
   },
   "author": "iyaki",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "cssnano": "^7.0.6",
     "html-minifier-terser": "^7.2.0",
     "minify-xml": "^4.5.2",
