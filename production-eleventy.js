@@ -1,10 +1,8 @@
-'use strict'
-
-const postcss = require('postcss')
-const postcssPresetEnv = require('postcss-preset-env')
-const cssnano = require('cssnano')
-const htmlSyntax = require('postcss-html')
-const { minify: minifyHtml } = require('html-minifier-terser')
+import postcss from 'postcss'
+import postcssPresetEnv from 'postcss-preset-env'
+import cssnano from 'cssnano'
+import htmlSyntax from 'postcss-html'
+import { minify as minifyHtml } from 'html-minifier-terser'
 
 function getPostCss() {
 	const postCssConfig = [
@@ -21,7 +19,7 @@ function getPostCss() {
 }
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-module.exports = eleventyConfig => {
+export default function(eleventyConfig) {
 	eleventyConfig.addTemplateFormats('css')
 
 	eleventyConfig.addExtension('css', {

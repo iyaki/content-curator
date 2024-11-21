@@ -1,8 +1,10 @@
-/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-module.exports = eleventyConfig => {
-	const BASE_PATH = 'web';
+import ProductionConfigs from './production-eleventy.js'
 
-	eleventyConfig.addPlugin(require('./production-eleventy.js'));
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
+export default function(eleventyConfig) {
+	const BASE_PATH = 'web'
+
+	eleventyConfig.addPlugin(ProductionConfigs)
 
 	eleventyConfig.addPassthroughCopy(BASE_PATH + '/images')
 	eleventyConfig.addPassthroughCopy(BASE_PATH + '/**/*.{png,jpg,jpeg,svg,webp,avif}')
