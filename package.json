@@ -16,7 +16,7 @@
     "minify-xml": "^4.5.2",
     "postcss": "^8.4.47",
     "postcss-html": "^1.7.0",
-    "postcss-preset-env": "^10.0.8"
+    "postcss-preset-env": "^10.1.1"
   },
   "dependencies": {
     "@11ty/eleventy-upgrade-help": "^3.0.1"
