@@ -141,7 +141,7 @@ a:visited {
 	margin: auto 1em;
 	text-align: center;
 }
-.main-panel * {
+.main-panel > * > * {
 	text-align: initial;
 }
 
@@ -150,12 +150,12 @@ a:visited {
 	max-width: calc(var(--main-content-width) + 6em);
 	margin-bottom: 2em;
 }
-.main-panel > article {
+.main-panel article {
 	display: inline-block;
-	max-width: var(--main-content-width);
+	width: var(--main-content-width);
 }
 
-.main-panel > hr {
+.main-panel hr {
 	max-width: calc(var(--main-content-width) + 8em);
 }
 
@@ -235,7 +235,7 @@ h1 {
 	}
 }
 
-.main-panel > article h3 {
+.main-panel article h3 {
 	font-size: 1.5em;
 }
 
