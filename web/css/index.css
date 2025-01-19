@@ -163,8 +163,7 @@ a:visited {
 	body {
 		display: grid;
 		grid-template-columns: 2fr 5fr 2fr;
-		grid-template-areas: ". main advertisements";
-		gap: 1em;
+		grid-template-areas: ". main . ";
 	}
 
 	.header-panel {
@@ -180,13 +179,8 @@ a:visited {
 		grid-area: main;
 	}
 
-	.advertisements-panel {
-		grid-area: advertisements;
-	}
-
 	.contact-panel {
 		position: fixed;
-		position: sticky;
 		bottom: 0;
 	}
 }
