@@ -219,6 +219,7 @@ h1 {
 .main-panel header details summary {
 	padding: 0 1em;
 	border-radius: 0.25em;
+	color: var(--text-color-light);
 
 	span {
 		transition: padding-left 0.5s;
