@@ -1,94 +1,98 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 
-<head>
-	<title>Recopilador de contenidos curados | iyaki</title>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="description" content="Artículos y páginas que encuentro interesantes">
-	<meta name="author" content="Ivan Yakimovicz">
-	<meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki, recopilador de contenidos curados, curator, curated, knowledge base">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
-	<meta name="theme-color" content="#ffffff">
-	<style>
-	{% if env.ELEVENTY_RUN_MODE == "build" %}{% render 'css/index.css' %}{% else %}@import '/css/index.css';{% endif %}
-	</style>
-	<link rel="alternate" type="application/atom+xml" href="/feed.xml">
-</head>
+<title>Recopilador de contenidos curados | iyaki</title>
+<meta charset="utf-8">
+<meta name="description" content="Artículos y páginas que encuentro interesantes">
+<meta name="author" content="Ivan Yakimovicz">
+<meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki, recopilador de contenidos curados, curator, curated, knowledge base">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="whitesmoke">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#34342f">
+<style>
+{% if env.ELEVENTY_RUN_MODE == "build" %}{% render 'css/index.css' %}{% else %}@import '/css/index.css';{% endif %}
+</style>
+<link rel="alternate" type="application/atom+xml" href="/feed.xml">
 
-<body>
-	<header class="header-panel">
-		<a href="https://iyaki.ar/" title="Website personal de Iván Yaki" class="logo">
-			<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con celofán azul y rojo" title="Allons-y!" loading="lazy" decoding="async" style="height: 10em; aspect-ratio: 1;" >
-		</a>
-		<h1>Colección de recursos de IT y afines</h1>
-		<p>Aquí recopilo artículos que me resultan útiles o interesantes.</p>
+<header class="header-panel">
+
+<a href="https://iyaki.ar/" title="Website personal de Iván Yaki" class="logo">
+<img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con celofán azul y rojo" title="Allons-y!" loading="lazy" decoding="async" style="height: 10em; aspect-ratio: 1;" >
+</a>
+
+<h1>Colección de recursos de IT y afines</h1>
+
+<p>Aquí recopilo artículos que me resultan útiles o interesantes.
+
+</header>
+
+<main class="main-panel">
+
+<figure style="display: none;" lang="en">
+<blockquote cite="https://www.goodreads.com/quotes/328366-doctor-who-you-want-weapons-we-re-in-a-library-books">
+	You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
+</blockquote>
+<figcaption><cite>The Doctor</cite></figcaption>
+</figure>
+
+<header>
+	<h2>Recopilador de contenidos curados</h2>
+
+	<p>Para filtrar, ordenar o buscar recursos de temáticas especificas pueden utilizar <a href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da" target="_blank" rel="noopener">mi Notion</a>, que sirve como origen de todos los artículos mostrados en esta web.</p>
+	<details>
+		<summary><span>Saber mas</span></summary>
+		<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este proyecto: Compartir.</p>
+		<p>Si les interesa conocer otros de mis proyectos o más acerca de mí, puede visitar <a href="https://iyaki.ar/">mi sitio web personal</a>.</p>
+		<h3>Este proyecto utiliza</h3>
+		<ul>
+			<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">11ty</a> como <span lang="en">static site generator</span>.
+			<li><a href="https://www.notion.so/product" lang="en" hreflang="en">Notion</a> como <abbr title="Content Management System"
+					lang="en">CMS</abbr>.
+			<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
+				comentarios de los artículos.
+			<li><a href="https://nodejs.org/" lang="en" hreflang="en">Node.js</a> y algunas bibliotecas para agregar a la web los artículos registrados en <span lang="en">Notion</span> (<a href="https://github.com/iyaki/content-curator">Código fuente</a>).
+			<li><a href="https://github.com/features/actions" lang="en" hreflang="en">Github Actions</a> para automatizar el agregado de los artículos.
+		</ul>
+	</details>
+</header>
+
+<svg aria-hidden="true" style="display: none;"><symbol id="external-link-ico" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5H8.2c-1.12 0-1.68 0-2.108.218a1.999 1.999 0 0 0-.874.874C5 6.52 5 7.08 5 8.2v7.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874c.427.218.987.218 2.105.218h7.606c1.118 0 1.677 0 2.104-.218.377-.192.683-.498.875-.874.218-.428.218-.987.218-2.105V14m1-5V4m0 0h-5m5 0-7 7"/></symbol></svg>
+<hr>
+{% assign entries = collections.entries | reverse | slice: 0, 20 %}
+{% for entry in entries %}
+<article>
+	<header>
+		<h3>{{ entry.data.title }}</h3>
+		<p>{{ entry.page.date | date: "%d/%m/%Y" }}</p>
 	</header>
-	<main class="main-panel">
-		<figure style="display: none;" lang="en">
-			<blockquote cite="https://www.goodreads.com/quotes/328366-doctor-who-you-want-weapons-we-re-in-a-library-books">
-				You Want Weapons? We're In A Library! Books! The Best Weapons In The World!
-			</blockquote>
-			<figcaption><cite>The Doctor</cite></figcaption>
-		</figure>
-		<header>
-			<h2>Recopilador de contenidos curados</h2>
-			<p>Para filtrar, ordenar o buscar recursos de temáticas especificas pueden utilizar <a href="https://iyaki.notion.site/iyaki/066daa9a7abb4c029724323209c85ca6?v=0a0294da7e734adcb9e4e5413c1db1da"
-				target="_blank" rel="noopener">mi Notion</a>, que sirve como origen de todos los artículos mostrados en esta web.</p>
-			<details>
-				<summary><span>Saber mas</span></summary>
-				<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este proyecto: Compartir.</p>
-				<p>Si les interesa conocer otros de mis proyectos o más acerca de mí, puede visitar <a href="https://iyaki.ar/">mi sitio web personal</a>.</p>
-				<h3>Este proyecto utiliza:</h3>
-				<ul>
-					<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">11ty</a> como <span lang="en">static site generator</span>.</li>
-					<li><a href="https://www.notion.so/product" lang="en" hreflang="en">Notion</a> como <abbr title="Content Management System"
-							lang="en">CMS</abbr>.</li>
-					<li><a href="https://chat.openai.com/" lang="en">ChatGPT</a> (mediante la <a href="https://platform.openai.com/overview">API REST de <span lang="en">OpenAI</span></a>) para escribir los
-						comentarios de los artículos.</li>
-					<li><a href="https://nodejs.org/" lang="en" hreflang="en">Node.js</a> y algunas bibliotecas para agregar a la web los artículos registrados en <span lang="en">Notion</span> (<a href="https://github.com/iyaki/content-curator">Código fuente</a>).</li>
-					<li><a href="https://github.com/features/actions" lang="en" hreflang="en">Github Actions</a> para automatizar el agregado de los artículos.</li>
-				</ul>
-			</details>
-		</header>
-		<section>
-			<svg xmlns="http://www.w3.org/2000/svg" hidden style="display: none;"><symbol id="external-link-ico" fill="none"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5H8.2c-1.12 0-1.68 0-2.108.218a1.999 1.999 0 0 0-.874.874C5 6.52 5 7.08 5 8.2v7.6c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874c.427.218.987.218 2.105.218h7.606c1.118 0 1.677 0 2.104-.218.377-.192.683-.498.875-.874.218-.428.218-.987.218-2.105V14m1-5V4m0 0h-5m5 0-7 7"/></symbol></svg>
-			<hr>
-			{% assign entries = collections.entries | reverse | slice: 0, 20 %}
-			{% for entry in entries %}
-			<article>
-				<header>
-					<h3>{{ entry.data.title }}</h3>
-					<p>{{ entry.page.date | date: "%d/%m/%Y" }}</p>
-				</header>
-				<p>{{ entry.data.comment }}</p>
-				<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">
-					Leer mas
-					<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align: middle;"><use href="#external-link-ico"></use></svg>
-				</a></p>
-			</article>
-			<hr>
-			{% endfor %}
-		</section>
-	</main>
-	<aside class="contact-panel" aria-label="Información de contacto">
-		<h2 class="sr-only">Contacto</h2>
-			<ul class="contact__list">
-				<li><a href="https://iyaki.ar">
-					<svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M9.838 18.447c.172.322.345.613.51.87a7.503 7.503 0 0 1-4.32-2.779c.694-.39 1.582-.795 2.65-1.091.303 1.19.731 2.195 1.16 3Zm1.324-.706a11.917 11.917 0 0 1-1.016-2.605A12.61 12.61 0 0 1 12 15c.656 0 1.274.05 1.854.136a11.916 11.916 0 0 1-1.016 2.605c-.299.56-.596 1.007-.838 1.335-.242-.328-.54-.775-.838-1.335ZM9.75 12c0 .584.04 1.139.109 1.662A14.11 14.11 0 0 1 12 13.5c.759 0 1.473.06 2.141.162a12.653 12.653 0 0 0 0-3.324 14.165 14.165 0 0 1-4.282 0A12.54 12.54 0 0 0 9.75 12Zm-1.363-1.971A14.133 14.133 0 0 0 8.25 12c0 .695.05 1.352.137 1.971a13.39 13.39 0 0 0-3.144 1.288A7.47 7.47 0 0 1 4.5 12a7.47 7.47 0 0 1 .743-3.26c.816.465 1.87.947 3.144 1.289Zm1.76-1.165a12.613 12.613 0 0 0 3.707 0 11.918 11.918 0 0 0-1.016-2.605A10.846 10.846 0 0 0 12 4.924c-.242.328-.54.775-.838 1.335a11.918 11.918 0 0 0-1.016 2.605Zm5.466 1.165a14.134 14.134 0 0 1 0 3.942c1.274.342 2.328.824 3.144 1.288A7.471 7.471 0 0 0 19.5 12a7.47 7.47 0 0 0-.743-3.26c-.816.465-1.87.947-3.144 1.289Zm2.359-2.567c-.694.39-1.582.795-2.65 1.091a13.434 13.434 0 0 0-1.67-3.87 7.502 7.502 0 0 1 4.32 2.779ZM8.678 8.553a11.879 11.879 0 0 1-2.65-1.091 7.503 7.503 0 0 1 4.32-2.78c-.165.258-.338.549-.51.871-.429.805-.857 1.81-1.16 3Zm6.644 6.894a13.434 13.434 0 0 1-1.67 3.87 7.503 7.503 0 0 0 4.32-2.779 11.882 11.882 0 0 0-2.65-1.091ZM12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/></svg>
-					iyaki.ar
-				</a></li>
-				<li><a href="https://github.com/iyaki/content-curator" lang="en" target="_blank">
-					<svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-					Github
-				</a></li>
-				<li><a href="/feed.xml" lang="en" target="_blank">
-					<svg xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m2.5 12A1.5 1.5 0 0 0 6 16.5A1.5 1.5 0 0 0 7.5 18A1.5 1.5 0 0 0 9 16.5A1.5 1.5 0 0 0 7.5 15M6 10v2a6 6 0 0 1 6 6h2a8 8 0 0 0-8-8m0-4v2a10 10 0 0 1 10 10h2A12 12 0 0 0 6 6"/></svg>
-					Feed RSS
-				</a></li>
-			</ul>
-	</aside>
-</body>
+	<p>{{ entry.data.comment }}</p>
+	<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">
+		Leer mas
+		<svg height="1em" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align: middle;"><use href="#external-link-ico"></use></svg>
+	</a></p>
+</article>
+<hr>
+{% endfor %}
 
-</html>
+</main>
+
+<aside class="contact-panel" aria-label="Información de contacto">
+	<h2 class="sr-only">Contacto</h2>
+	<address>
+		<ul class="contact__list">
+			<li><a href="https://iyaki.ar">
+				<svg height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M9.838 18.447c.172.322.345.613.51.87a7.503 7.503 0 0 1-4.32-2.779c.694-.39 1.582-.795 2.65-1.091.303 1.19.731 2.195 1.16 3Zm1.324-.706a11.917 11.917 0 0 1-1.016-2.605A12.61 12.61 0 0 1 12 15c.656 0 1.274.05 1.854.136a11.916 11.916 0 0 1-1.016 2.605c-.299.56-.596 1.007-.838 1.335-.242-.328-.54-.775-.838-1.335ZM9.75 12c0 .584.04 1.139.109 1.662A14.11 14.11 0 0 1 12 13.5c.759 0 1.473.06 2.141.162a12.653 12.653 0 0 0 0-3.324 14.165 14.165 0 0 1-4.282 0A12.54 12.54 0 0 0 9.75 12Zm-1.363-1.971A14.133 14.133 0 0 0 8.25 12c0 .695.05 1.352.137 1.971a13.39 13.39 0 0 0-3.144 1.288A7.47 7.47 0 0 1 4.5 12a7.47 7.47 0 0 1 .743-3.26c.816.465 1.87.947 3.144 1.289Zm1.76-1.165a12.613 12.613 0 0 0 3.707 0 11.918 11.918 0 0 0-1.016-2.605A10.846 10.846 0 0 0 12 4.924c-.242.328-.54.775-.838 1.335a11.918 11.918 0 0 0-1.016 2.605Zm5.466 1.165a14.134 14.134 0 0 1 0 3.942c1.274.342 2.328.824 3.144 1.288A7.471 7.471 0 0 0 19.5 12a7.47 7.47 0 0 0-.743-3.26c-.816.465-1.87.947-3.144 1.289Zm2.359-2.567c-.694.39-1.582.795-2.65 1.091a13.434 13.434 0 0 0-1.67-3.87 7.502 7.502 0 0 1 4.32 2.779ZM8.678 8.553a11.879 11.879 0 0 1-2.65-1.091 7.503 7.503 0 0 1 4.32-2.78c-.165.258-.338.549-.51.871-.429.805-.857 1.81-1.16 3Zm6.644 6.894a13.434 13.434 0 0 1-1.67 3.87 7.503 7.503 0 0 0 4.32-2.779 11.882 11.882 0 0 0-2.65-1.091ZM12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/></svg>
+				iyaki.ar
+			</a></li>
+			<li><a href="https://github.com/iyaki/content-curator" lang="en" target="_blank">
+				<svg height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+				Github
+			</a></li>
+			<li><a href="/feed.xml" lang="en" target="_blank">
+				<svg height="1.3em" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m2.5 12A1.5 1.5 0 0 0 6 16.5A1.5 1.5 0 0 0 7.5 18A1.5 1.5 0 0 0 9 16.5A1.5 1.5 0 0 0 7.5 15M6 10v2a6 6 0 0 1 6 6h2a8 8 0 0 0-8-8m0-4v2a10 10 0 0 1 10 10h2A12 12 0 0 0 6 6"/></svg>
+				Feed RSS
+			</a></li>
+		</ul>
+	</address>
+</aside>
