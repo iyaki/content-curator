@@ -64,7 +64,7 @@
 <article>
 	<header>
 		<h3>{{ entry.data.title }}</h3>
-		<p>{{ entry.page.date | date: "%d/%m/%Y" }}</p>
+		<p>Agregado el <time datetime="{{ entry.page.date | date: "%Y-%m-%d" }}">{{ entry.page.date | date: "%d/%m/%Y" }}</time></p>
 	</header>
 	<p>{{ entry.data.comment }}</p>
 	<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">
