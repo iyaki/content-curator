@@ -2,8 +2,8 @@
 permalink: /feed.xml
 eleventyExcludeFromCollections: true
 ---
-{% assign articles = collections.entries | reverse | slice: 0, 20 %}
 <?xml version="1.0" encoding="utf-8"?>
+{% assign articles = collections.entries | reverse | slice: 0, 20 %}
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
 	<id>{{ site.url }}/</id>
 	<title>{{ site.title }}</title>
