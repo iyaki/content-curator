@@ -1,7 +1,7 @@
 {
   "name": "iyaki.ar",
   "scripts": {
-    "build": "rm -rf ./_site; npx @11ty/eleventy",
+    "build": "rm -rf ./_site; npx @11ty/eleventy && jampack ./_site",
     "serve": "npx @11ty/eleventy --serve"
   },
   "author": "iyaki",
@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@divriots/jampack": "^0.33.0",
     "cssnano": "^7.0.6",
     "html-minifier-terser": "^7.2.0",
     "minify-xml": "^4.5.2",
