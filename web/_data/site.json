@@ -1,5 +1,9 @@
 {
 	"name": "iyaki",
 	"url": "https://curated.iyaki.ar",
-	"author": "Ivan Yakimovicz"
+	"author": {
+		"name": "Ivan Yakimovicz",
+		"url": "https://iyaki.ar"
+	},
+	"title": "Recopilador de contenidos curados | iyaki"
 }

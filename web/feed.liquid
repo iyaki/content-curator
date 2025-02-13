@@ -2,28 +2,29 @@
 permalink: /feed.xml
 eleventyExcludeFromCollections: true
 ---
+{% assign articles = collections.entries | reverse | slice: 0, 20 %}
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-	<channel>
-		<title>Recopilador de contenidos curados | iyaki</title>
-		<description>Artículos que me resultan útiles o interesantes</description>
-		<link>{{ site.url }}/</link>
-		<language>es</language>
-		<atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
-		<image>
-			<url>{{ site.url }}/images/logo.png</url>
-			<title>Recopilador de contenidos curados | iyaki</title>
-			<link>{{ site.url }}/</link>
-		</image>
-		{% assign articles = collections.entries | reverse | slice: 0, 20 %}
-		{% for article in articles %}
-			<item>
-				<title><![CDATA[{{ article.data.title }}]]></title>
-				<description><![CDATA[{{ article.data.comment }}]]></description>
-				<pubDate>{{ article.page.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-				<link>{{ article.data.link }}</link>
-				<guid isPermaLink="true">{{ article.data.link }}</guid>
-			</item>
-		{% endfor %}
-	</channel>
-</rss>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+	<id>{{ site.url }}/</id>
+	<title>{{ site.title }}</title>
+	<subtitle>Artículos que me resultan útiles o interesantes</subtitle>
+	<updated>{{ articles[0].page.date | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
+	<link href="{{ site.url }}/" hreflang="es" />
+	<link href="{{ site.url }}/feed.xml" rel="self" />
+	<author>
+		<name>{{ site.author.name }}</name>
+		<uri>{{ site.author.url }}</uri>
+	</author>
+	<icon>{{ site.url }}/images/logo.png</icon>
+	<logo>{{ site.url }}/images/logo.png</logo>
+	{% for article in articles %}
+	<entry>
+		<id>{{ article.data.link }}</id>
+		<title><![CDATA[{{ article.data.title }}]]></title>
+		<summary><![CDATA[{{ article.data.comment }}]]></summary>
+		<content>{{ article.data.link }}</content>
+		<link rel="alternate" href="{{ article.data.link }}" />
+		<updated>{{ article.page.date | date: "%Y-%m-%dT%H:%M:%SZ" }}</updated>
+	</entry>
+	{% endfor %}
+</feed>
