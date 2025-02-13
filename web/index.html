@@ -4,7 +4,7 @@
 <title>{{ site.title }}</title>
 <meta charset="utf-8">
 <meta name="description" content="Artículos y páginas que encuentro interesantes">
-<meta name="author" content="Ivan Yakimovicz">
+<meta name="author" content="{{ site.author.name }}">
 <meta name="keywords" content="Ivan Yakimovicz, Ivan Yaki, iyaki, recopilador de contenidos curados, curator, curated, knowledge base">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
@@ -17,7 +17,7 @@
 
 <header class="header-panel">
 
-<a href="https://iyaki.ar/" title="Website personal de Iván Yaki" class="logo">
+<a href="{{ site.author.url }}" title="Website personal de Iván Yaki" class="logo">
 <img src="/images/logo.svg" alt="Logo de mi web, unos anteojos 3D de cartón blanco con celofán azul y rojo" title="Allons-y!" loading="lazy" decoding="async" style="height: 10em; aspect-ratio: 1;" >
 </a>
 
@@ -43,7 +43,7 @@
 	<details>
 		<summary><span>Saber mas</span></summary>
 		<p>Hace algún tiempo comencé a recopilar distintos artículos y recursos que encuentro en internet en mi día a día y de los que aprendo algo nuevo. Me pareció que podía ser interesante compartirlos y ese es el objetivo de este proyecto: Compartir.</p>
-		<p>Si les interesa conocer otros de mis proyectos o más acerca de mí, puede visitar <a href="https://iyaki.ar/">mi sitio web personal</a>.</p>
+		<p>Si les interesa conocer otros de mis proyectos o más acerca de mí, puede visitar <a href="{{ site.author.url }}">mi sitio web personal</a>.</p>
 		<h3>Este proyecto utiliza</h3>
 		<ul>
 			<li><a href="https://www.11ty.dev/" lang="en" hreflang="en">11ty</a> como <span lang="en">static site generator</span>.

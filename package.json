@@ -1,7 +1,7 @@
 {
   "name": "iyaki.ar",
   "scripts": {
-    "build": "npx @11ty/eleventy",
+    "build": "rm -rf ./_site; npx @11ty/eleventy",
     "serve": "npx @11ty/eleventy --serve"
   },
   "author": "iyaki",
