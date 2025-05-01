@@ -21,6 +21,6 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.3.0",
-    "openai": "^4.95.1"
+    "openai": "^4.96.2"
   }
 }
