@@ -1,0 +1,16 @@
+---js
+{
+	title: `git stash driven refactoring`,
+	comment: `¿Te suena familiar esto? Muchas veces me pasa. Después de varias iteraciones de este ciclo, donde constantemente comienzo nuevas refactorizaciones, suelo terminar con un espacio de trabajo de git que contiene un montón de cambios no relacionados. Y como generalmente programo en Rust estos días, es muy probable que mi proyecto ni siquiera compile, porque empecé (pero no terminé) muchos cambios. En este punto, solía rendirme, hacer git checkout . de todo y empezar desde cero, para evitar tener que desenredar el lío y separar limpiamente los cambios no relacionados en commits individuales.
+
+Si a veces también caes en estos interminables ciclos de refactorización, encontré un flujo de trabajo bastante simple que me facilita desenredarlos (al menos para mí). Cada vez que notes algo subóptimo en la base de código que no es parte directa de lo que estás implementando actualmente y que quieres "refactorizar ligeramente", usa git stash para guardar todos tus cambios actuales, y comienza a trabajar en la refactorización que acabas de pensar. Si te encuentras con otra cosa que deba refactorizarse o arreglarse durante eso, aplica el flujo de trabajo de forma recursiva: git stash tus cambios y comienza a trabajar en la última cosa que tienes en mente. Después de finalmente llegar a un cambio que puedas terminar de principio a fin, haz commit, y luego restaura el estado anterior con git stash pop y continúa avanzando. Con este enfoque, los cambios se aplican de forma "de adentro hacia afuera".
+
+No es nada innovador, por supuesto, pero siento que este flujo de trabajo realmente me ayuda a concentrarme en una sola cosa a la vez. No tengo que considerar los cambios no comprometidos que hice en algo no relacionado anteriormente. Sé que siempre puedo eliminar todos los cambios del espacio de trabajo sin preocuparme de que eliminaré el trabajo en la característica anterior que generó esta refactorización. Y lo más importante, no tengo que pensar en el trabajo anterior en progreso. Esto es similar a cómo usar asserts en el código me ayuda a evitar pensar en ciertas posibilidades y caminos de código, ya que sé que no pueden ocurrir.
+
+Por supuesto, si las refactorizaciones individuales son demasiado no relacionadas, es posible que desees fusionarlas en PRs separados, por lo que a veces tiene sentido agregar un montón de cherry-picks o rebases interactivos para mover el trabajo a una rama diferente y fusionarlo por separado. Pero lo principal es evitar trabajar en múltiples cosas a la vez, para evitar distracciones, para lo cual git stash es realmente útil.
+
+Por cierto, aquí tienes dos pequeños consejos relacionados con git stash.`,
+	link: `https://kobzol.github.io/programming/2025/05/06/git-stash-driven-refactoring.html`,
+	date: `2025-07-28T12:25:53.043Z`,
+}
+---
