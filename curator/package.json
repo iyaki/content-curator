@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/iyaki/iyaki.github.io",
   "engines": {
-    "node": "20"
+    "node": "24"
   },
   "dependencies": {
     "@notionhq/client": "^4.0.2",
