@@ -20,7 +20,7 @@
     "node": "24"
   },
   "dependencies": {
-    "@notionhq/client": "^4.0.2",
+    "@notionhq/client": "^5.1.0",
     "openai": "^5.18.1"
   }
 }
