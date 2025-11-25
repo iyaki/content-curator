@@ -1,8 +1,5 @@
 {
     "recommendations": [
-        "sissel.shopify-liquid",
-        "yzhang.markdown-all-in-one",
-        "streetsidesoftware.code-spell-checker-spanish",
-        "streetsidesoftware.code-spell-checker"
+        "sissel.shopify-liquid"
     ]
 }
