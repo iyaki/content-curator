@@ -1,0 +1,45 @@
+# Notion Content Curator Task List
+
+- [x] Analyze requirements and user process <!-- id: 0 -->
+    - [x] Read provided articles <!-- id: 1 -->
+    - [x] Identify Notion database schema and classification fields <!-- id: 2 -->
+    - [x] Identify logic for moving entries between databases <!-- id: 3 -->
+- [x] Plan implementation <!-- id: 4 -->
+    - [x] Define architecture (Node.js + OpenAI/GitHub Models + Notion SDK) <!-- id: 5 -->
+    - [x] Design data flow <!-- id: 6 -->
+- [x] Setup project <!-- id: 7 -->
+    - [x] Initialize Node.js project <!-- id: 8 -->
+    - [x] Install dependencies <!-- id: 9 -->
+- [x] Implement Classification Logic <!-- id: 10 -->
+    - [x] Fetch unclassified entries from Triage DB <!-- id: 11 -->
+    - [x] Generate classification using LLM <!-- id: 12 -->
+    - [x] Update entries in Notion <!-- id: 13 -->
+- [x] Implement Organization Logic <!-- id: 14 -->
+    - [x] Move classified entries to Knowledge Base DB <!-- id: 15 -->
+- [x] Setup GitHub Actions <!-- id: 16 -->
+    - [x] Create workflow for scheduled execution <!-- id: 17 -->
+- [x] Refactor to Separate Package <!-- id: 19 -->
+    - [x] Create `organizer` directory and `package.json` <!-- id: 20 -->
+    - [x] Move `organizer.js` to `organizer/index.js` <!-- id: 21 -->
+    - [x] Clean up `curator` directory <!-- id: 22 -->
+    - [x] Update GitHub Workflow <!-- id: 23 -->
+- [x] Refactor Move Logic <!-- id: 24 -->
+    - [x] Update `organizer/index.js` to use `parent` update <!-- id: 25 -->
+- [x] Expand Classification Logic <!-- id: 26 -->
+    - [x] Fetch Database Schema (Properties & Options) <!-- id: 27 -->
+    - [x] Generate Dynamic Prompt for OpenAI <!-- id: 28 -->
+    - [x] Apply all properties to the page <!-- id: 29 -->
+- [x] Enhance Context <!-- id: 30 -->
+    - [x] Fetch page blocks (content) from Notion <!-- id: 31 -->
+    - [x] Extract text from blocks <!-- id: 32 -->
+    - [x] Include content in OpenAI prompt <!-- id: 33 -->
+- [x] Revert to Copy & Delete <!-- id: 34 -->
+    - [x] Implement `getAllPageBlocks` (pagination) <!-- id: 35 -->
+    - [x] Implement `createPageWithContent` <!-- id: 36 -->
+    - [x] Archive original page <!-- id: 37 -->
+- [x] Add Visuals & Fix Bugs <!-- id: 38 -->
+    - [x] Fix Image Block Copying (Validation Error) <!-- id: 39 -->
+    - [x] Request Emoji from OpenAI <!-- id: 40 -->
+    - [x] Request Cover Keyword from OpenAI <!-- id: 41 -->
+    - [x] Apply Icon and Cover to new page <!-- id: 42 -->
+- [x] Verify and Test <!-- id: 18 -->

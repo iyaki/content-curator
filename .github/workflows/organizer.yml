@@ -1,0 +1,29 @@
+name: Scheduled Organizer
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Run every day at midnight
+
+permissions:
+  contents: write
+
+jobs:
+  organize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - id: organize
+        name: Organize Content
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TRIAGE_DATABASE_ID: ${{ secrets.TRIAGE_DATABASE_ID }}
+          KNOWLEDGE_BASE_DATABASE_ID: ${{ secrets.KNOWLEDGE_BASE_DATABASE_ID }} # Optional if using default
+        run: |
+          cd organizer
+          npm install --save-exact
+          npm start
