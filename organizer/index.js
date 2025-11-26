@@ -106,10 +106,89 @@ async function getAllPageBlocks(pageId) {
 			allBlocks.push(...response.results)
 			cursor = response.next_cursor
 		} while (cursor)
+
+		// Recursively fetch children for tables
+		for (const block of allBlocks) {
+			if (block.has_children && block.type === 'table') {
+				block.table.children = await getAllPageBlocks(block.id)
+			}
+		}
 	} catch (error) {
 		console.warn(`Failed to fetch blocks for page ${pageId}:`, error.message)
 	}
 	return allBlocks
+}
+
+function sanitizeBlocks(blocks) {
+	return blocks.flatMap(block => {
+		// We only copy supported block types and strip metadata
+		if (!block[block.type]) return []
+
+		// Skip unsupported types for creation via API if necessary
+		if (['child_page', 'child_database', 'unsupported'].includes(block.type)) return []
+
+		// Fix for image blocks: ensure they have a valid object
+		if (block.type === 'image') {
+			if (block.image.type === 'external') {
+				return [{ type: 'image', image: { external: { url: block.image.external.url } } }]
+			}
+			if (block.image.type === 'file') {
+				// Files hosted by Notion expire, so we might lose them if we don't re-upload
+				// For now, we skip internal files to avoid errors
+				return []
+			}
+		}
+
+		const blockContent = { ...block[block.type] }
+
+		// Sanitize rich_text links
+		if (blockContent.rich_text) {
+			blockContent.rich_text = blockContent.rich_text.map(textItem => {
+				if (textItem.href) {
+					try {
+						const url = new URL(textItem.href)
+						if (!['http:', 'https:'].includes(url.protocol)) {
+							throw new Error('Invalid protocol')
+						}
+					} catch (e) {
+						// Invalid URL, remove href and link
+						const { href, ...rest } = textItem
+						if (rest.text && rest.text.link) {
+							const { link, ...textRest } = rest.text
+							return { ...rest, text: textRest }
+						}
+						return rest
+					}
+				}
+				return textItem
+			})
+		}
+
+		// Handle long text blocks (Notion limit: 2000 characters)
+		if (blockContent.rich_text && blockContent.rich_text.length === 1) {
+			const textItem = blockContent.rich_text[0]
+			if (textItem.type === 'text' && textItem.text.content.length > 2000) {
+				const chunks = textItem.text.content.match(/[\s\S]{1,2000}/g) || []
+				return chunks.map(chunk => ({
+					type: block.type,
+					[block.type]: {
+						...blockContent,
+						rich_text: [{ type: 'text', text: { content: chunk } }]
+					}
+				}))
+			}
+		}
+
+		// Recursively sanitize children (e.g. for tables)
+		if (blockContent.children) {
+			blockContent.children = sanitizeBlocks(blockContent.children)
+		}
+
+		return [{
+			type: block.type,
+			[block.type]: blockContent
+		}]
+	})
 }
 
 function extractTextFromBlocks(blocks) {
@@ -204,36 +283,12 @@ async function copyAndDeletePage(originalPage, classification, blocks) {
 	}
 
 	// Sanitize blocks for creation
-	const children = blocks.map(block => {
-		// We only copy supported block types and strip metadata
-		if (!block[block.type]) return null
-
-		// Skip unsupported types for creation via API if necessary
-		if (['child_page', 'child_database', 'unsupported'].includes(block.type)) return null
-
-		// Fix for image blocks: ensure they have a valid object
-		if (block.type === 'image') {
-			if (block.image.type === 'external') {
-				return { type: 'image', image: { external: { url: block.image.external.url } } }
-			}
-			if (block.image.type === 'file') {
-				// Files hosted by Notion expire, so we might lose them if we don't re-upload
-				// For now, we skip internal files to avoid errors, or we could try to copy the URL if valid
-				// But Notion API doesn't allow creating 'file' blocks with hosted URLs easily without re-uploading
-				return null
-			}
-		}
-
-		return {
-			type: block.type,
-			[block.type]: block[block.type]
-		}
-	}).filter(b => b !== null)
+	const children = sanitizeBlocks(blocks)
 
 	const pageParams = {
 		parent: { database_id: KNOWLEDGE_BASE_DATABASE_ID },
 		properties: propertiesToUpdate,
-		children: children
+		children: children.slice(0, 100)
 	}
 
 	if (classification.Emoji) {
@@ -246,6 +301,19 @@ async function copyAndDeletePage(originalPage, classification, blocks) {
 
 	const newPage = await notion.pages.create(pageParams)
 	console.log(`Created new page ${newPage.id} in Knowledge Base.`)
+
+	// Append remaining blocks in batches of 100
+	if (children.length > 100) {
+		const remainingBlocks = children.slice(100)
+		for (let i = 0; i < remainingBlocks.length; i += 100) {
+			const batch = remainingBlocks.slice(i, i + 100)
+			await notion.blocks.children.append({
+				block_id: newPage.id,
+				children: batch
+			})
+			console.log(`Appended batch ${i / 100 + 1} of remaining blocks.`)
+		}
+	}
 
 	await notion.pages.update({
 		page_id: originalPage.id,
