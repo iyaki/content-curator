@@ -23,7 +23,7 @@ let databaseSchema = null
 
 export async function organize() {
 	console.log('Starting organization process...')
-	
+
 	// Fetch schema first
 	databaseSchema = await getDatabaseSchema()
 	console.log('Fetched database schema properties:', Object.keys(databaseSchema).join(', '))
@@ -244,6 +244,8 @@ Return a JSON object with the following keys:
 
 For 'multi_select', return an array of strings. For 'select', return a single string.
 Only use the provided options for properties.
+
+Avoid adding the "Article" Category along with "Tool" or "Service".
 
 Example JSON output:
 {
