@@ -13,6 +13,12 @@ updates:
     schedule:
       interval: monthly
 
+  # organizer
+  - package-ecosystem: npm
+    directory: "/organizer/"
+    schedule:
+      interval: monthly
+
   # web
   - package-ecosystem: npm
     directory: "/"
