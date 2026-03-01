@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client'
 import { getComment } from './commentator.js'
 
-const DATABASE_ID = '066daa9a7abb4c029724323209c85ca6'
+const DATA_SOURCE_ID = 'e1a982ac-2c77-40d9-8783-50e1646af757'
 
 const notion = new Client({
 	auth: process.env.NOTION_TOKEN,
@@ -18,8 +18,8 @@ export async function getNewArticle(lastArticleId) {
 }
 
 async function fetchArticleFromNotion(startCursor) {
-	const results = await notion.databases.query({
-		database_id: DATABASE_ID,
+	const results = await notion.dataSources.query({
+		data_source_id: DATA_SOURCE_ID,
 		page_size: 2,
 		start_cursor: startCursor,
 		sorts: [{
