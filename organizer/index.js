@@ -3,7 +3,7 @@ import OpenAI from 'openai'
 import 'dotenv/config'
 
 const TRIAGE_DATABASE_ID = process.env.TRIAGE_DATABASE_ID
-const KNOWLEDGE_BASE_DATABASE_ID = process.env.KNOWLEDGE_BASE_DATABASE_ID || '066daa9a7abb4c029724323209c85ca6'
+const KNOWLEDGE_BASE_DATASOURCE_ID = 'e1a982ac-2c77-40d9-8783-50e1646af757'
 
 if (!TRIAGE_DATABASE_ID) {
 	console.error('TRIAGE_DATABASE_ID is not defined in environment variables.')
@@ -12,6 +12,7 @@ if (!TRIAGE_DATABASE_ID) {
 
 const notion = new Client({
 	auth: process.env.NOTION_TOKEN,
+	notionVersion: '2025-09-03',
 })
 
 const openai = new OpenAI({
@@ -44,22 +45,22 @@ export async function organize() {
 
 async function getDatabaseSchema() {
 	try {
-		const database = await notion.databases.retrieve({ database_id: KNOWLEDGE_BASE_DATABASE_ID })
+		const dataSource = await notion.dataSources.retrieve({ data_source_id: KNOWLEDGE_BASE_DATASOURCE_ID })
 		const properties = {}
 
-		for (const [name, prop] of Object.entries(database.properties)) {
+		for (const [name, prop] of Object.entries(dataSource.properties)) {
 			// We only care about Select and Multi-select for classification for now
 			if (prop.type === 'select' || prop.type === 'multi_select') {
 				properties[name] = {
 					type: prop.type,
-					options: prop[prop.type].options.map(opt => opt.name)
+					options: prop[prop.type]?.options?.map(opt => opt.name) || []
 				}
 			}
 		}
 		return properties
 	} catch (error) {
 		if (error.code === 'object_not_found') {
-			console.error(`Error: Could not access Knowledge Base Database (${KNOWLEDGE_BASE_DATABASE_ID}). Make sure the integration is connected to it.`)
+			console.error(`Error: Could not access Knowledge Base Database. Make sure the integration is connected to it.`)
 			process.exit(1)
 		}
 		throw error
@@ -67,8 +68,15 @@ async function getDatabaseSchema() {
 }
 
 async function fetchUnclassifiedArticles() {
-	const results = await notion.databases.query({
-		database_id: TRIAGE_DATABASE_ID,
+	// Fetch the data source ID from the triage database
+	const database = await notion.databases.retrieve({ database_id: TRIAGE_DATABASE_ID })
+	if (!database.data_sources || database.data_sources.length === 0) {
+		throw new Error(`No data sources found in triage database ${TRIAGE_DATABASE_ID}`)
+	}
+	const triageDataSourceId = database.data_sources[0].id
+
+	const results = await notion.dataSources.query({
+		data_source_id: triageDataSourceId,
 		page_size: 10,
 	})
 	return results.results
@@ -288,7 +296,7 @@ async function copyAndDeletePage(originalPage, classification, blocks) {
 	const children = sanitizeBlocks(blocks)
 
 	const pageParams = {
-		parent: { database_id: KNOWLEDGE_BASE_DATABASE_ID },
+		parent: { data_source_id: KNOWLEDGE_BASE_DATASOURCE_ID },
 		properties: propertiesToUpdate,
 		children: children.slice(0, 100)
 	}

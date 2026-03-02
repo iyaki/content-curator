@@ -8,9 +8,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.14",
+    "@notionhq/client": "^5.11.0",
     "dotenv": "^17.2.3",
-    "openai": "^4.28.0"
+    "openai": "^6.25.0"
   },
   "engines": {
     "node": "24"
