@@ -1,0 +1,8 @@
+---js
+{
+	title: `Heuristic: Ors Are Expensive`,
+	comment: `Planificar consultas puede ser difícil. A veces las consultas tienen más de un filtro (usando una cláusula 'and'). Pero el desarrollador puede terminar en situaciones que requieren una cláusula 'or': ¡Pero esto es lento! ¡Con 1,000,000 de aplicaciones y 1000 usuarios uniformemente distribuidos en ambas columnas, tarda más de 100ms! Si lo reescribimos con solo 'and', ¡Esto tarda menos de 1ms; ¡Más de 100 veces más rápido! ¡Es sorprendente! Tenemos índices en las columnas filtradas. Pero, ¿por qué? Primero, necesitamos desarrollar intuición sobre cómo y cuándo se usan los índices.`,
+	link: `https://ethanseal.com/articles/ors-are-expensive`,
+	date: `2026-03-02T00:36:43.642Z`,
+}
+---
