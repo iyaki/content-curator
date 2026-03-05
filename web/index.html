@@ -64,10 +64,10 @@
 {% for entry in entries %}
 <article>
 	<header>
-		<h3>{{ entry.data.title }}</h3>
+		<h3>{{ entry.data.title | escape }}</h3>
 		<p>Agregado el <time datetime="{{ entry.page.date | date: "%Y-%m-%d" }}">{{ entry.page.date | date: "%d/%m/%Y" }}</time></p>
 	</header>
-	<p>{{ entry.data.comment }}</p>
+	<p>{{ entry.data.comment | escape }}</p>
 	<p><a href="{{ entry.data.link }}" target="_blank" rel="noopener" title="Artículo original">
 		Leer mas
 		<svg height="1em" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align: middle;"><use href="#external-link-ico"></use></svg>
