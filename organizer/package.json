@@ -10,7 +10,7 @@
   "dependencies": {
     "@notionhq/client": "^5.16.0",
     "dotenv": "^17.4.0",
-    "openai": "^6.25.0"
+    "openai": "^6.33.0"
   },
   "engines": {
     "node": "24"
