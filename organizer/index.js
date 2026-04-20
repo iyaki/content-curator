@@ -138,7 +138,7 @@ function sanitizeBlocks(blocks) {
 		// Fix for image blocks: ensure they have a valid object
 		if (block.type === 'image') {
 			if (block.image.type === 'external') {
-				return [{ type: 'image', image: { external: { url: block.image.external.url } } }]
+				return [sanitizeNotionValue({ type: 'image', image: { external: { url: block.image.external.url } } })]
 			}
 			if (block.image.type === 'file') {
 				// Files hosted by Notion expire, so we might lose them if we don't re-upload
@@ -177,7 +177,7 @@ function sanitizeBlocks(blocks) {
 			const textItem = blockContent.rich_text[0]
 			if (textItem.type === 'text' && textItem.text.content.length > 2000) {
 				const chunks = textItem.text.content.match(/[\s\S]{1,2000}/g) || []
-				return chunks.map(chunk => ({
+				return chunks.map(chunk => sanitizeNotionValue({
 					type: block.type,
 					[block.type]: {
 						...blockContent,
@@ -192,11 +192,37 @@ function sanitizeBlocks(blocks) {
 			blockContent.children = sanitizeBlocks(blockContent.children)
 		}
 
-		return [{
+		return [sanitizeNotionValue({
 			type: block.type,
 			[block.type]: blockContent
-		}]
+		})]
 	})
+}
+
+function sanitizeNotionValue(value) {
+	if (Array.isArray(value)) {
+		return value
+			.map(item => sanitizeNotionValue(item))
+			.filter(item => item !== undefined)
+	}
+
+	if (value && typeof value === 'object') {
+		const sanitizedEntries = Object.entries(value)
+			.map(([key, nestedValue]) => [key, sanitizeNotionValue(nestedValue)])
+			.filter(([, nestedValue]) => nestedValue !== undefined)
+
+		if (sanitizedEntries.length === 0) {
+			return undefined
+		}
+
+		return Object.fromEntries(sanitizedEntries)
+	}
+
+	if (value === null || value === undefined) {
+		return undefined
+	}
+
+	return value
 }
 
 function extractTextFromBlocks(blocks) {
