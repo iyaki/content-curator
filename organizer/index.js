@@ -82,12 +82,50 @@ async function fetchUnclassifiedArticles() {
 	return results.results
 }
 
+// ponytail: known tracking params only (utm_/mtm_ prefixes + this set); extend if newsletters add new ones
+const TRACKING_PARAMS = new Set([
+	'fbclid', 'gclid', 'gclsrc', 'dclid', 'msclkid', 'twclid', 'yclid', 'igshid',
+	'mc_cid', 'mc_eid', '_hsenc', '_hsmi', 'ref', 'ref_src', 'ref_url',
+])
+
+export function stripTrackingParams(url) {
+	try {
+		const u = new URL(url)
+		for (const key of [...u.searchParams.keys()]) {
+			if (key.startsWith('utm_') || key.startsWith('mtm_') || TRACKING_PARAMS.has(key)) {
+				u.searchParams.delete(key)
+			}
+		}
+		return u.toString()
+	} catch {
+		return url // not parseable; leave as-is
+	}
+}
+
+// KB URLs are stored normalized (backfilled + stripped on write), so an exact-match filter is safe here.
+async function isInKnowledgeBase(url) {
+	const results = await notion.dataSources.query({
+		data_source_id: KNOWLEDGE_BASE_DATASOURCE_ID,
+		filter: { property: 'URL', url: { equals: url } },
+		page_size: 1,
+	})
+	return results.results.length > 0
+}
+
 async function processArticle(article) {
 	const title = article.properties.Name?.title[0]?.plain_text || 'Untitled'
-	const url = article.properties.URL?.url
+	const rawUrl = article.properties.URL?.url
 
-	if (!url) {
+	if (!rawUrl) {
 		console.log(`Skipping article ${article.id} (No URL)`)
+		return
+	}
+
+	const url = stripTrackingParams(rawUrl)
+
+	if (await isInKnowledgeBase(url)) {
+		console.log(`Duplicate: "${title}" (${url}) already in Knowledge Base. Archiving triage entry.`)
+		await notion.pages.update({ page_id: article.id, archived: true })
 		return
 	}
 
@@ -99,7 +137,7 @@ async function processArticle(article) {
 	const classification = await classifyArticle(title, url, content)
 	console.log(`Classification result:`, JSON.stringify(classification, null, 2))
 
-	await copyAndDeletePage(article, classification, blocks)
+	await copyAndDeletePage(article, url, classification, blocks)
 }
 
 async function getAllPageBlocks(pageId) {
@@ -299,10 +337,10 @@ Example JSON output:
 	return JSON.parse(completion.choices[0].message.content)
 }
 
-async function copyAndDeletePage(originalPage, classification, blocks) {
+async function copyAndDeletePage(originalPage, url, classification, blocks) {
 	const propertiesToUpdate = {
 		Name: originalPage.properties.Name, // Preserve Title
-		URL: originalPage.properties.URL,   // Preserve URL
+		URL: { url },                       // Normalized URL (no tracking params)
 	}
 
 	for (const [name, value] of Object.entries(classification)) {

@@ -32,6 +32,7 @@ npm start
 
 1.  Fetches unclassified items from `TRIAGE_DATABASE_ID`.
 2.  Fetches the database schema to understand available properties (Select/Multi-select).
-3.  Uses OpenAI to analyze the article and determine values for ALL available properties.
-4.  Creates a new page in `KNOWLEDGE_BASE_DATABASE_ID` with all content, updated properties, an Emoji icon, and a Cover image.
-5.  Archives the original page in `TRIAGE_DATABASE_ID`.
+3.  Normalizes the article URL (strips tracking params like `utm_*`, `fbclid`, `ref`) and skips + archives the entry if the normalized URL already exists in the Knowledge Base.
+4.  Uses OpenAI to analyze the article and determine values for ALL available properties.
+5.  Creates a new page in `KNOWLEDGE_BASE_DATABASE_ID` with all content, updated properties, an Emoji icon, and a Cover image.
+6.  Archives the original page in `TRIAGE_DATABASE_ID`.
