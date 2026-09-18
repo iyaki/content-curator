@@ -32,12 +32,19 @@ export async function organize() {
 	const unclassifiedArticles = await fetchUnclassifiedArticles()
 	console.log(`Found ${unclassifiedArticles.length} unclassified articles.`)
 
+	let failures = 0
 	for (const article of unclassifiedArticles) {
 		try {
 			await processArticle(article)
 		} catch (error) {
+			failures++
 			console.error(`Failed to process article ${article.id}:`, error)
 		}
+	}
+
+	if (failures > 0) {
+		console.error(`${failures} of ${unclassifiedArticles.length} articles failed to process.`)
+		process.exitCode = 1 // Fail the CI job instead of hiding broken runs behind exit 0
 	}
 
 	console.log('Organization process finished.')
@@ -165,7 +172,7 @@ async function getAllPageBlocks(pageId) {
 	return allBlocks
 }
 
-function sanitizeBlocks(blocks) {
+export function sanitizeBlocks(blocks) {
 	return blocks.flatMap(block => {
 		// We only copy supported block types and strip metadata
 		if (!block[block.type]) return []
@@ -230,11 +237,22 @@ function sanitizeBlocks(blocks) {
 			blockContent.children = sanitizeBlocks(blockContent.children)
 		}
 
-		return [sanitizeNotionValue({
+		const sanitized = sanitizeNotionValue({
 			type: block.type,
 			[block.type]: blockContent
-		})]
+		})
+		// Empty-content blocks (divider, breadcrumb, synced_block...) sanitize their
+		// content to `{}` which sanitizeNotionValue drops; Notion requires the key to exist.
+		if (sanitized && sanitized[block.type] === undefined) {
+			sanitized[block.type] = {}
+		}
+		return [sanitized]
 	})
+}
+
+// The LLM sometimes returns a single string where an array is expected (or noise); keep string options only.
+export function toOptionNames(value) {
+	return (Array.isArray(value) ? value : [value]).filter(v => typeof v === 'string')
 }
 
 function sanitizeNotionValue(value) {
@@ -350,9 +368,14 @@ async function copyAndDeletePage(originalPage, url, classification, blocks) {
 		if (!schema) continue
 
 		if (schema.type === 'select') {
-			propertiesToUpdate[name] = { select: { name: value } }
+			if (typeof value === 'string') {
+				propertiesToUpdate[name] = { select: { name: value } }
+			}
 		} else if (schema.type === 'multi_select') {
-			propertiesToUpdate[name] = { multi_select: value.map(v => ({ name: v })) }
+			const options = toOptionNames(value)
+			if (options.length > 0) {
+				propertiesToUpdate[name] = { multi_select: options.map(name => ({ name })) }
+			}
 		}
 	}
 
