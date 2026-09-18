@@ -147,27 +147,25 @@ async function processArticle(article) {
 	await copyAndDeletePage(article, url, classification, blocks)
 }
 
+// No try/catch: a Notion API failure here must fail the article (and the run),
+// otherwise we'd archive originals while copying incomplete content.
 async function getAllPageBlocks(pageId) {
 	let allBlocks = []
 	let cursor = undefined
-	try {
-		do {
-			const response = await notion.blocks.children.list({
-				block_id: pageId,
-				start_cursor: cursor,
-			})
-			allBlocks.push(...response.results)
-			cursor = response.next_cursor
-		} while (cursor)
+	do {
+		const response = await notion.blocks.children.list({
+			block_id: pageId,
+			start_cursor: cursor,
+		})
+		allBlocks.push(...response.results)
+		cursor = response.next_cursor
+	} while (cursor)
 
-		// Recursively fetch children for tables
-		for (const block of allBlocks) {
-			if (block.has_children && block.type === 'table') {
-				block.table.children = await getAllPageBlocks(block.id)
-			}
+	// Recursively fetch children for tables
+	for (const block of allBlocks) {
+		if (block.has_children && block.type === 'table') {
+			block.table.children = await getAllPageBlocks(block.id)
 		}
-	} catch (error) {
-		console.warn(`Failed to fetch blocks for page ${pageId}:`, error.message)
 	}
 	return allBlocks
 }
@@ -421,5 +419,8 @@ async function copyAndDeletePage(originalPage, url, classification, blocks) {
 
 // Auto-run if executed directly
 if (process.argv[1] === import.meta.filename) {
-	organize()
+	organize().catch(error => {
+		console.error('Organization run failed:', error)
+		process.exit(1)
+	})
 }
