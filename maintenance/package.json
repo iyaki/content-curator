@@ -1,0 +1,19 @@
+{
+  "name": "iyaki-maintenance",
+  "version": "1.0.0",
+  "description": "Scheduled Notion Knowledge Base maintenance tasks",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@mozilla/readability": "0.6.0",
+    "@notionhq/client": "^5.26.0",
+    "dotenv": "^17.4.2",
+    "linkedom": "0.18.13"
+  },
+  "engines": {
+    "node": "24"
+  }
+}

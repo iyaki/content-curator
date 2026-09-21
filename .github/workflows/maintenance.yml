@@ -1,0 +1,32 @@
+name: Scheduled Maintenance
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Log actions without applying them'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 3 1 1,7 *' # Jan 1 and Jul 1 at 03:00 UTC (every 6 months)
+
+permissions:
+  contents: read
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Run maintenance tasks
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          KNOWLEDGE_BASE_DATASOURCE_ID: ${{ secrets.KNOWLEDGE_BASE_DATABASE_ID }} # Optional if using default
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+        run: |
+          cd maintenance
+          npm install --save-exact
+          npm start
