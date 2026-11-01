@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@notionhq/client": "^5.26.0",
+    "@notionhq/client": "^5.29.0",
     "dotenv": "^18.0.4",
     "openai": "^7.23.0"
   },
