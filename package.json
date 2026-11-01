@@ -10,7 +10,7 @@
     "node": "24"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy": "^3.1.7",
     "@divriots/jampack": "^0.34.1",
     "cssnano": "^9.1.1",
     "html-minifier-terser": "^7.2.0",
